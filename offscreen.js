@@ -196,7 +196,7 @@ function loop() {
         // threshold=0 → 任何注視臉就觸發；threshold=1 → 要 2 張（自己+別人）
         triggerCondition = watchingCount > settings.extraFaceThreshold;
 
-        // 標示用的臉：挑「最遠的注視臉」當作可能的偷看者（自己通常離鏡頭最近）
+        // 標示用的臉：挑「最遠的注視臉」當作代表（用於顯示距離文字）
         let markFace = watchingFaces[0] || faces[0];
         if (watchingFaces.length > 1) {
           markFace = watchingFaces.reduce((a, b) =>
@@ -216,6 +216,9 @@ function loop() {
           isClose: markFace.isClose,
           watching: triggerCondition,
           faceBox: markFace.faceBox,
+          faceBoxes: watchingFaces.length > 0
+            ? watchingFaces.map((f) => f.faceBox)
+            : [markFace.faceBox],
         };
       }
 

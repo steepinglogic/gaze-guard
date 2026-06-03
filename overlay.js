@@ -112,12 +112,19 @@
 
   // ── 模式二：人臉位置標示 ──
   function buildMarker(info, color, duration) {
-    const faceBox = info.faceBox || { cx: 0.5, cy: 0.4 };
+    const faceBoxes = info.faceBoxes || [info.faceBox || { cx: 0.5, cy: 0.4 }];
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const faceX = Math.round(faceBox.cx * vw);
-    const faceY = Math.round(faceBox.cy * vh);
     const distText = info.distanceCm ? `約 ${info.distanceCm} 公分` : "近距離";
+    const countText = faceBoxes.length > 1 ? `${faceBoxes.length} 人` : "";
+
+    const markerHTML = faceBoxes.map((fb) => {
+      const faceX = Math.round(fb.cx * vw);
+      const faceY = Math.round(fb.cy * vh);
+      return `
+      <div class="gg-marker" style="left:${faceX - 45}px; top:${faceY - 45}px;"></div>
+      <div class="gg-arrow" style="left:${faceX - 24}px; top:${faceY - 105}px;">↓</div>`;
+    }).join("");
 
     return `
       <style>
@@ -157,11 +164,10 @@
         <span class="gg-eye">👁</span>
         <span>
           <span class="gg-title">有人正在看你的螢幕</span><br>
-          <span class="gg-sub">偵測到${distText}處有人正面注視鏡頭</span>
+          <span class="gg-sub">偵測到${countText ? countText + "，" : ""}${distText}處有人正面注視鏡頭</span>
         </span>
       </div>
-      <div class="gg-marker" style="left:${faceX - 45}px; top:${faceY - 45}px;"></div>
-      <div class="gg-arrow" style="left:${faceX - 24}px; top:${faceY - 105}px;">↓</div>
+      ${markerHTML}
     `;
   }
 
