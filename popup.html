@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaze Guard</title>
+  <style>
+    :root {
+      --bg: #16140f;
+      --surface: #211e17;
+      --surface-2: #2c2820;
+      --border: #3a352a;
+      --text: #ebe6d8;
+      --text-dim: #9c9486;
+      --accent: #c9a35b;
+      --accent-dim: #8a7339;
+      --green: #6fae5e;
+      --red: #c66a5a;
+      --amber: #d4a23c;
+      --font: "Hiragino Sans", "Microsoft JhengHei", -apple-system, sans-serif;
+      --mono: "SF Mono", "Consolas", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 340px;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      padding: 18px;
+      font-size: 14px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+    .title .sub {
+      display: block;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 400;
+      letter-spacing: 0;
+      margin-top: 2px;
+    }
+    .toggle-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.15s;
+    }
+    .toggle-btn.on {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #16140f;
+    }
+    .toggle-btn:hover { border-color: var(--accent); }
+
+    .status {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      font-size: 13px;
+    }
+    .status-row .label { color: var(--text-dim); }
+    .status-row .val { font-family: var(--mono); font-size: 13px; }
+    .dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+      background: var(--text-dim);
+    }
+    .dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .dot.red { background: var(--red); }
+    .dot.amber { background: var(--amber); }
+
+    .watch-bar {
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .watch-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--amber);
+      border-radius: 3px;
+      transition: width 0.2s linear;
+    }
+
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      margin: 16px 0 8px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+    }
+    .field label {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .field label .num {
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background: var(--surface-2);
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+    select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: var(--font);
+      outline: none;
+    }
+    .row-2 { display: flex; gap: 10px; }
+    .row-2 .field { flex: 1; }
+
+    .color-row { display: flex; gap: 10px; }
+    .color-swatch {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.1s, border-color 0.1s;
+    }
+    .color-swatch:hover { transform: scale(1.08); }
+    .color-swatch.active {
+      border-color: var(--text);
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px currentColor;
+    }
+
+    .target-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .target-box .current {
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      word-break: break-all;
+      margin-top: 4px;
+      max-height: 32px;
+      overflow: hidden;
+    }
+    .small-btn {
+      border: 1px solid var(--accent-dim);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: var(--font);
+      width: 100%;
+      margin-top: 8px;
+    }
+    .small-btn:hover { background: var(--surface-2); }
+
+    .hint {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .error {
+      color: var(--red);
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+    }
+    .footer {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+      Gaze Guard
+      <span class="sub">窺探守衛 · 本機運算</span>
+    </div>
+    <button id="toggle" class="toggle-btn">啟動</button>
+  </div>
+
+  <div class="status">
+    <div class="status-row">
+      <span class="label"><span id="state-dot" class="dot"></span>狀態</span>
+      <span class="val" id="state-text">未啟動</span>
+    </div>
+    <div class="status-row">
+      <span class="label">偵測到人臉</span>
+      <span class="val" id="face-text">—</span>
+    </div>
+    <div class="status-row">
+      <span class="label">估算距離</span>
+      <span class="val" id="dist-text">—</span>
+    </div>
+    <div class="status-row">
+      <span class="label">朝向 (yaw / pitch)</span>
+      <span class="val" id="angle-text">—</span>
+    </div>
+    <div class="watch-bar"><div id="watch-fill" class="watch-fill"></div></div>
+    <div class="error" id="error-box"></div>
+  </div>
+
+  <div class="section-title">觸發後動作</div>
+  <div class="field">
+    <select id="action-mode">
+      <option value="notify_and_switch">畫面提示 + 切換分頁</option>
+      <option value="overlay_only">只顯示畫面提示</option>
+      <option value="switch_only">只切換分頁</option>
+    </select>
+  </div>
+
+  <div class="section-title">提示方式</div>
+  <div class="field">
+    <select id="overlay-mode">
+      <option value="border">邊框順時針跑光</option>
+      <option value="marker">標示人臉位置</option>
+    </select>
+  </div>
+  <div class="field" id="color-field">
+    <label>邊框顏色</label>
+    <div class="color-row">
+      <button class="color-swatch" data-color="#c9a35b" title="金色" style="background:#c9a35b"></button>
+      <button class="color-swatch" data-color="#5dcaa5" title="青綠色" style="background:#5dcaa5"></button>
+      <button class="color-swatch" data-color="#e24b4a" title="紅色" style="background:#e24b4a"></button>
+    </div>
+  </div>
+  <div class="field">
+    <label>顯示時間 <span class="num"><span id="duration-val">1500</span> ms</span></label>
+    <input type="range" id="overlay-duration" min="500" max="5000" step="100" value="1500">
+    <div class="hint">提示在畫面上停留的時間（最大 5000 毫秒）。若同時切換分頁，會在此時間後才切換。</div>
+  </div>
+
+  <div class="target-box">
+    <div>目標分頁（被偷看時切換到這裡）：</div>
+    <div class="current" id="target-current">尚未設定</div>
+    <button class="small-btn" id="set-target">把目前分頁設為目標</button>
+  </div>
+
+  <div class="section-title">偵測參數</div>
+  <div class="field">
+    <label>額外臉孔門檻 <span class="num"><span id="extra-face-val">1</span></span></label>
+    <input type="range" id="extra-face" min="0" max="5" step="1" value="1">
+    <div class="hint">需要幾張「額外」的注視臉孔才觸發。設 1 表示除了你自己，還要有第 2 張臉正面靠近才提醒（建議值，避免自己的臉誤觸發）。設 0 則任何注視臉都觸發。</div>
+  </div>
+  <div class="field">
+    <label>觸發距離 <span class="num"><span id="dist-val">80</span> cm 以內</span></label>
+    <input type="range" id="trigger-distance" min="40" max="150" step="5" value="80">
+  </div>
+  <div class="row-2">
+    <div class="field">
+      <label>持續注視 <span class="num"><span id="hold-val">2.5</span>s</span></label>
+      <input type="range" id="hold-seconds" min="0.5" max="6" step="0.5" value="2.5">
+    </div>
+    <div class="field">
+      <label>冷卻 <span class="num"><span id="cooldown-val">20</span>s</span></label>
+      <input type="range" id="cooldown-seconds" min="5" max="60" step="5" value="20">
+    </div>
+  </div>
+  <div class="field">
+    <label>正面容許角度 <span class="num">±<span id="yaw-val">22</span>°</span></label>
+    <input type="range" id="yaw-threshold" min="8" max="40" step="2" value="22">
+    <div class="hint">角度越小越要求對方正對鏡頭才觸發，可降低誤判。</div>
+  </div>
+  <div class="field">
+    <label>距離校正（焦距）<span class="num"><span id="focal-val">650</span> px</span></label>
+    <input type="range" id="focal-length" min="400" max="1000" step="10" value="650">
+    <div class="hint">若距離估算偏差，調整此值校正。臉越近時讀數應越小。</div>
+  </div>
+
+  <div class="footer">
+    所有影像分析皆在你的瀏覽器本機完成，<br>不會上傳任何畫面或資料。
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
