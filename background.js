@@ -121,40 +121,39 @@ async function handleTrigger(info) {
   }
   const targetInjectable = target && /^https?:|^file:/.test(target.url || "");
 
-  // 決定提示要顯示在哪個分頁
-  if (wantOverlay) {
+  // 若需要切換分頁：立即切換，overlay 顯示在目標分頁
+  if (wantSwitch && target) {
+    try {
+      await chrome.tabs.update(target.id, { active: true });
+      await chrome.windows.update(target.windowId, { focused: true });
+    } catch (e) {}
+
+    if (wantOverlay) {
+      if (targetInjectable) {
+        // 稍等分頁切換穩定後，在目標分頁顯示提示
+        await new Promise((r) => setTimeout(r, 200));
+        await showOverlayOnTab(target, info, overlayOpts);
+      } else {
+        console.warn("[GazeGuard/BG] 目標分頁不可注入，改用系統通知");
+        showSystemNotification(info);
+      }
+    }
+  } else if (wantOverlay) {
+    // overlay_only 模式：在當前分頁顯示
     if (activeInjectable) {
-      // 當前分頁可注入：先在這裡顯示提示，之後再切換
       await showOverlayOnTab(activeTab, info, overlayOpts);
     } else if (target && targetInjectable) {
-      // 當前分頁不可注入（例如擴充頁），但目標分頁可以：
-      // 先切換過去，再在目標分頁顯示提示
-      console.log("[GazeGuard/BG] 當前分頁不可注入，改切換到目標分頁後顯示提示");
+      console.log("[GazeGuard/BG] 當前分頁不可注入，切換到目標分頁後顯示提示");
       try {
         await chrome.tabs.update(target.id, { active: true });
         await chrome.windows.update(target.windowId, { focused: true });
       } catch (e) {}
-      // 稍等分頁切換完成
       await new Promise((r) => setTimeout(r, 200));
       await showOverlayOnTab(target, info, overlayOpts);
-      // 已經切換過了，標記不需再切
-      target = null;
     } else {
       console.warn("[GazeGuard/BG] 當前與目標分頁皆不可注入，改用系統通知");
       showSystemNotification(info);
     }
-  }
-
-  // 切換分頁（若上面尚未切換）
-  if (wantSwitch && target) {
-    const delay = wantOverlay ? overlayOpts.overlayDurationMs : 0;
-    console.log(`[GazeGuard/BG] ${delay}ms 後切換到分頁`, target.id);
-    setTimeout(async () => {
-      try {
-        await chrome.tabs.update(target.id, { active: true });
-        await chrome.windows.update(target.windowId, { focused: true });
-      } catch (e) {}
-    }, delay);
   }
 
   await chrome.storage.local.set({ lastTrigger: { time: Date.now(), info } });
