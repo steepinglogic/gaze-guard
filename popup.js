@@ -10,6 +10,7 @@ const angleText = $("angle-text");
 const watchFill = $("watch-fill");
 const errorBox = $("error-box");
 const targetCurrent = $("target-current");
+const kofiBtn = $("kofi-btn");
 
 let monitoring = false;
 let currentSettings = {};
@@ -122,6 +123,11 @@ toggleBtn.addEventListener("click", async () => {
       renderState();
     });
   }
+});
+
+// --- Ko-fi 按鈕 ---
+kofiBtn.addEventListener("click", () => {
+  chrome.tabs.create({ url: "https://ko-fi.com/steepinglogic" });
 });
 
 // --- 設定目標分頁 ---
