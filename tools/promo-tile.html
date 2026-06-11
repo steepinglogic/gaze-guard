@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin:0; padding:0; width:440px; height:280px; overflow:hidden; }
+  body {
+    background:
+      radial-gradient(ellipse at top right, #c9a35b22 0%, transparent 55%),
+      radial-gradient(ellipse at bottom left, #1f2630 0%, transparent 55%),
+      linear-gradient(135deg, #0c0a08 0%, #14110d 100%);
+    color:#ebe6d8;
+    font-family:"Hiragino Sans","Microsoft JhengHei",-apple-system,"Helvetica Neue",sans-serif;
+    position:relative;
+  }
+  .glow-ring {
+    position:absolute; right:-60px; top:-60px;
+    width:280px; height:280px; border-radius:50%;
+    border:1.5px solid #c9a35b55;
+    box-shadow: 0 0 80px #c9a35b22, inset 0 0 60px #c9a35b11;
+  }
+  .eye {
+    position:absolute; right:60px; top:80px;
+    width:120px; height:120px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .eye svg { width:100%; height:100%; filter: drop-shadow(0 0 12px #c9a35b66); }
+  .copy { position:absolute; left:32px; top:54px; right:200px; }
+  .brand {
+    font-size:10px; letter-spacing:0.4em; color:#c9a35b;
+    text-transform:uppercase; margin-bottom:14px; font-weight:600;
+  }
+  h1 {
+    font-size:30px; line-height:1.1; margin:0 0 14px;
+    font-weight:700;
+    background: linear-gradient(135deg, #f5ecd5 0%, #c9a35b 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tag { font-size:13px; color:#9c9486; line-height:1.45; }
+  .footer {
+    position:absolute; bottom:18px; left:32px; right:32px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11px; color:#6e6557;
+  }
+  .footer .pill {
+    border:1px solid #c9a35b66; color:#c9a35b;
+    padding:4px 10px; border-radius:14px; font-size:10px;
+    letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+<div class="glow-ring"></div>
+<div class="eye">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <ellipse cx="50" cy="50" rx="42" ry="24" stroke="#c9a35b" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="14" stroke="#c9a35b" stroke-width="2"/>
+    <circle cx="50" cy="50" r="7" fill="#c9a35b"/>
+    <circle cx="46" cy="46" r="2" fill="#fef6e0"/>
+  </svg>
+</div>
+<div class="copy">
+  <div class="brand">GAZE GUARD</div>
+  <h1>有人偷瞄<br>立刻察覺</h1>
+  <div class="tag">webcam 偵測背後人臉<br>100% 本機運算 · 零網路請求</div>
+</div>
+<div class="footer">
+  <span class="pill">窺探守衛</span>
+  <span>Chrome MV3 · MediaPipe</span>
+</div>
+</body>
+</html>

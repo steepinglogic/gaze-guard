@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    width: 1280px; height: 800px;
+    background: radial-gradient(ellipse at top, #1a1814 0%, #0c0a08 60%, #050403 100%);
+    font-family: "Hiragino Sans", "Microsoft JhengHei", -apple-system, "Helvetica Neue", sans-serif;
+    color: #ebe6d8;
+    overflow: hidden;
+  }
+  .stage {
+    position: relative;
+    width: 100%; height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: center;
+    gap: 64px;
+    padding: 0 80px;
+    box-sizing: border-box;
+  }
+  .copy { max-width: 560px; }
+  .brand {
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    color: #c9a35b;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: 56px; font-weight: 700; line-height: 1.1; margin: 0 0 24px;
+    background: linear-gradient(135deg, #f5ecd5 0%, #c9a35b 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 {
+    font-size: 20px; font-weight: 400; color: #9c9486;
+    line-height: 1.6; margin: 0 0 32px;
+  }
+  .pill-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill {
+    border: 1px solid #c9a35b66; color: #c9a35b;
+    padding: 8px 16px; border-radius: 24px;
+    font-size: 13px; background: rgba(201,163,91,0.06);
+  }
+  .frame {
+    position: relative; width: 420px;
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px #c9a35b33, 0 0 80px #c9a35b22;
+    background: #16140f;
+  }
+  .frame iframe {
+    display: block; width: 420px; border: 0; background: #16140f;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="copy">
+    <div class="brand">GAZE GUARD · 窺探守衛</div>
+    <h1>有人偷瞄螢幕？<br>立刻知道。</h1>
+    <h2>用 webcam 偵測一定距離內的額外人臉，瞬間提醒並可自動切換分頁。<br>所有運算在本機完成，影像不離開你的電腦。</h2>
+    <div class="pill-row">
+      <div class="pill">100% 本機運算</div>
+      <div class="pill">零網路請求</div>
+      <div class="pill">MediaPipe Face Landmarker</div>
+      <div class="pill">Chrome MV3</div>
+    </div>
+  </div>
+  <div class="frame">
+    <iframe id="popup-frame" src="../popup.html" width="420" height="720"></iframe>
+  </div>
+</div>
+</body>
+</html>

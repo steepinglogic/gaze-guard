@@ -3,3 +3,5 @@
 .superpowers/
 .remember/
 docs/superpowers/
+node_modules/
+store-assets/

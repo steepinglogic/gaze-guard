@@ -1,0 +1,27 @@
+{
+  "name": "gaze-guard",
+  "version": "1.0.0",
+  "description": "偵測到有人從遠端盯著你的螢幕時，自動顯示視覺提示或切換到指定分頁。   所有影像分析在瀏覽器本機完成，**畫面與人臉資料不會離開你的電腦**。",
+  "main": "background.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "private": true,
+  "scripts": {
+    "gen-assets": "node tools/gen-store-assets.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steepinglogic/gaze-guard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steepinglogic/gaze-guard/issues"
+  },
+  "homepage": "https://github.com/steepinglogic/gaze-guard#readme",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

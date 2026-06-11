@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>The Quiet Notebook — A Sunday Morning Read</title>
+<style>
+  :root { --ink:#1a1a1a; --paper:#fafafa; --mute:#6b6b6b; --accent:#8b6f47; }
+  html, body { margin:0; padding:0; background:var(--paper); color:var(--ink);
+    font-family:"Georgia","Songti TC","Times New Roman",serif; }
+  body { width:1280px; height:800px; overflow:hidden; }
+  .nav { display:flex; align-items:center; justify-content:space-between;
+    padding:18px 64px; border-bottom:1px solid #eee; background:#fff; }
+  .brand { font-family:"Helvetica Neue",sans-serif; font-weight:700; letter-spacing:0.18em; font-size:14px; }
+  .nav-links { display:flex; gap:28px; font-family:"Helvetica Neue",sans-serif; font-size:13px; color:var(--mute); }
+  .article { padding:48px 64px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; }
+  .lead h1 { font-size:44px; line-height:1.15; margin:0 0 18px; font-weight:700; }
+  .meta { color:var(--mute); font-size:13px; font-family:"Helvetica Neue",sans-serif;
+    letter-spacing:0.06em; margin-bottom:24px; text-transform:uppercase; }
+  .lead p { font-size:17px; line-height:1.75; margin:0 0 16px; color:#2a2a2a; }
+  .lead p.dropcap::first-letter {
+    font-size:64px; float:left; line-height:0.9; padding:4px 12px 0 0; color:var(--accent); font-weight:700;
+  }
+  .side { background:#f1ece2; padding:32px; border-radius:6px; height:fit-content; }
+  .side h3 { margin:0 0 12px; font-size:14px; letter-spacing:0.16em;
+    font-family:"Helvetica Neue",sans-serif; text-transform:uppercase; color:var(--accent); }
+  .side ul { list-style:none; padding:0; margin:0; }
+  .side li { font-size:15px; line-height:1.6; padding:10px 0; border-bottom:1px solid #ded5c4; }
+  .side li:last-child { border:0; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="brand">THE QUIET NOTEBOOK</div>
+  <div class="nav-links"><span>Essays</span><span>Letters</span><span>Archive</span><span>About</span></div>
+</div>
+<div class="article">
+  <div class="lead">
+    <div class="meta">Slow reading · 8 min</div>
+    <h1>On reading alone in a noisy room</h1>
+    <p class="dropcap">There is a particular kind of stillness that arrives when a sentence asks more from you than the next minute promises. It does not announce itself. You simply notice, half a page later, that you have stopped moving.</p>
+    <p>The cafe outside the window is full. Someone is laughing about a job they have just quit. A barista calls a name three times. None of it touches the room you are in, which is the room of the page — narrower than your study, larger than the building.</p>
+  </div>
+  <aside class="side">
+    <h3>Reading Now</h3>
+    <ul>
+      <li>The Long Slow Affair · Ishiguro</li>
+      <li>Notes on Quietude · M. Lamott</li>
+      <li>Letters to a Young Editor</li>
+      <li>What We Talk About When We Walk</li>
+    </ul>
+  </aside>
+</div>
+<div id="overlay-host"></div>
+<script>
+function buildMarker(info, color) {
+  const faceBoxes = info.faceBoxes;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const distText = info.distanceCm ? `約 ${info.distanceCm} 公分` : "近距離";
+  const countText = faceBoxes.length > 1 ? `${faceBoxes.length} 人` : "";
+  const markerHTML = faceBoxes.map((fb) => {
+    const faceX = Math.round(fb.cx * vw);
+    const faceY = Math.round(fb.cy * vh);
+    return `
+      <div class="gg-marker" style="left:${faceX - 45}px; top:${faceY - 45}px;"></div>
+      <div class="gg-arrow" style="left:${faceX - 24}px; top:${faceY - 105}px;">↓</div>`;
+  }).join("");
+  return `
+    <style>
+      .gg-banner {
+        position: fixed; top: 24px; left: 50%;
+        transform: translateX(-50%);
+        background: #16140f; color: #ebe6d8;
+        border: 1px solid ${color}; border-radius: 14px;
+        padding: 16px 24px;
+        font-family: "Hiragino Sans", "Microsoft JhengHei", -apple-system, sans-serif;
+        font-size: 16px; font-weight: 500;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        display: flex; align-items: center; gap: 12px;
+      }
+      .gg-eye { font-size: 22px; }
+      .gg-title { color: ${color}; font-weight: 600; }
+      .gg-sub { color: #9c9486; font-size: 13px; }
+      .gg-marker {
+        position: fixed; width: 90px; height: 90px;
+        border: 3px solid ${color}; border-radius: 50%;
+        box-shadow: 0 0 0 4px ${color}40, 0 0 24px ${color}66;
+      }
+      .gg-arrow {
+        position: fixed; font-size: 48px; color: ${color};
+        filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+      }
+    </style>
+    <div class="gg-banner">
+      <span class="gg-eye">👁</span>
+      <span>
+        <span class="gg-title">有人正在看你的螢幕</span><br>
+        <span class="gg-sub">偵測到${countText ? countText + "，" : ""}${distText}處有人正面注視鏡頭</span>
+      </span>
+    </div>
+    ${markerHTML}
+  `;
+}
+const host = document.getElementById("overlay-host");
+host.style.cssText = "position:fixed;inset:0;z-index:2147483647;pointer-events:none;";
+const shadow = host.attachShadow({mode:"open"});
+shadow.innerHTML = buildMarker({
+  faceBoxes: [{ cx: 0.78, cy: 0.42 }],
+  distanceCm: 68,
+}, "#c9a35b");
+</script>
+</body>
+</html>
