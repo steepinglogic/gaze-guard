@@ -78,7 +78,7 @@
     "message": "显示时间"
   },
   "hintDuration": {
-    "message": "提示在画面上停留的时间（最大 5000 毫秒）。若同时切换标签页，会在此时间后才切换。"
+    "message": "提示在画面上停留的时间"
   },
   "targetIntro": {
     "message": "目标标签页（被偷看时切换到这里）："
@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "否"
+  },
+  "sectionLanguage": {
+    "message": "界面语言"
+  },
+  "localeAuto": {
+    "message": "自动（浏览器语言）"
   }
 }

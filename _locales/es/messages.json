@@ -78,7 +78,7 @@
     "message": "Duración"
   },
   "hintDuration": {
-    "message": "Tiempo que la alerta permanece en pantalla (máx. 5000 ms). Si también se cambia de pestaña, el cambio ocurrirá después de este tiempo."
+    "message": "Duración de la alerta en pantalla"
   },
   "targetIntro": {
     "message": "Pestaña de destino (cambiará a esta al ser espiado):"
@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "No"
+  },
+  "sectionLanguage": {
+    "message": "Idioma de la interfaz"
+  },
+  "localeAuto": {
+    "message": "Auto (navegador)"
   }
 }

@@ -29,7 +29,7 @@
     const shadow = host.attachShadow({ mode: "open" });
 
     if (mode === "marker") {
-      shadow.innerHTML = buildMarker(info, color, duration);
+      shadow.innerHTML = buildMarker(info, color, duration, opts);
     } else {
       shadow.innerHTML = buildBorder(color, duration);
     }
@@ -111,20 +111,12 @@
   }
 
   // ── 模式二：人臉位置標示 ──
-  function buildMarker(info, color, duration) {
+  function buildMarker(info, color, duration, opts) {
     const faceBoxes = info.faceBoxes || [info.faceBox || { cx: 0.5, cy: 0.4 }];
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const distText = info.distanceCm
-      ? chrome.i18n.getMessage("overlayDistAbout", [String(info.distanceCm)])
-      : chrome.i18n.getMessage("overlayDistNear");
-    const countText = faceBoxes.length > 1
-      ? chrome.i18n.getMessage("overlayCount", [String(faceBoxes.length)])
-      : "";
-    const subText = countText
-      ? chrome.i18n.getMessage("overlaySubWithCount", [countText, distText])
-      : chrome.i18n.getMessage("overlaySubNoCount", [distText]);
-    const titleText = chrome.i18n.getMessage("overlayTitle");
+    const titleText = (opts.strings && opts.strings.title) || "";
+    const subText = (opts.strings && opts.strings.sub) || "";
 
     const markerHTML = faceBoxes.map((fb) => {
       const faceX = Math.round(fb.cx * vw);
