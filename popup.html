@@ -252,110 +252,109 @@
   <div class="header">
     <div class="title">
       Gaze Guard
-      <span class="sub">窺探守衛 · 本機運算</span>
+      <span class="sub" data-i18n="popupSubtitle"></span>
     </div>
-    <button id="toggle" class="toggle-btn">啟動</button>
+    <button id="toggle" class="toggle-btn" data-i18n="btnStart"></button>
   </div>
 
   <button id="kofi-btn" class="kofi-btn">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
       <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/>
     </svg>
-    Support me on Ko-fi
+    <span data-i18n="kofiSupport"></span>
   </button>
 
   <div class="status">
     <div class="status-row">
-      <span class="label"><span id="state-dot" class="dot"></span>狀態</span>
-      <span class="val" id="state-text">未啟動</span>
+      <span class="label"><span id="state-dot" class="dot"></span><span data-i18n="labelStatus"></span></span>
+      <span class="val" id="state-text" data-i18n="statusIdle"></span>
     </div>
     <div class="status-row">
-      <span class="label">偵測到人臉</span>
+      <span class="label" data-i18n="labelFace"></span>
       <span class="val" id="face-text">—</span>
     </div>
     <div class="status-row">
-      <span class="label">估算距離</span>
+      <span class="label" data-i18n="labelDist"></span>
       <span class="val" id="dist-text">—</span>
     </div>
     <div class="status-row">
-      <span class="label">朝向 (yaw / pitch)</span>
+      <span class="label" data-i18n="labelAngle"></span>
       <span class="val" id="angle-text">—</span>
     </div>
     <div class="watch-bar"><div id="watch-fill" class="watch-fill"></div></div>
     <div class="error" id="error-box"></div>
   </div>
 
-  <div class="section-title">觸發後動作</div>
+  <div class="section-title" data-i18n="sectionAction"></div>
   <div class="field">
     <select id="action-mode">
-      <option value="notify_and_switch">畫面提示 + 切換分頁</option>
-      <option value="overlay_only">只顯示畫面提示</option>
-      <option value="switch_only">只切換分頁</option>
+      <option value="notify_and_switch" data-i18n="optNotifyAndSwitch"></option>
+      <option value="overlay_only" data-i18n="optOverlayOnly"></option>
+      <option value="switch_only" data-i18n="optSwitchOnly"></option>
     </select>
   </div>
 
-  <div class="section-title">提示方式</div>
+  <div class="section-title" data-i18n="sectionOverlayMode"></div>
   <div class="field">
     <select id="overlay-mode">
-      <option value="border">邊框順時針跑光</option>
-      <option value="marker">標示人臉位置</option>
+      <option value="border" data-i18n="optBorder"></option>
+      <option value="marker" data-i18n="optMarker"></option>
     </select>
   </div>
   <div class="field" id="color-field">
-    <label>邊框顏色</label>
+    <label data-i18n="labelColorBorder"></label>
     <div class="color-row">
-      <button class="color-swatch" data-color="#c9a35b" title="金色" style="background:#c9a35b"></button>
-      <button class="color-swatch" data-color="#5dcaa5" title="青綠色" style="background:#5dcaa5"></button>
-      <button class="color-swatch" data-color="#e24b4a" title="紅色" style="background:#e24b4a"></button>
+      <button class="color-swatch" data-color="#c9a35b" data-i18n-title="colorGold" style="background:#c9a35b"></button>
+      <button class="color-swatch" data-color="#5dcaa5" data-i18n-title="colorTeal" style="background:#5dcaa5"></button>
+      <button class="color-swatch" data-color="#e24b4a" data-i18n-title="colorRed" style="background:#e24b4a"></button>
     </div>
   </div>
   <div class="field">
-    <label>顯示時間 <span class="num"><span id="duration-val">1500</span> ms</span></label>
+    <label><span data-i18n="labelDuration"></span> <span class="num"><span id="duration-val">1500</span> ms</span></label>
     <input type="range" id="overlay-duration" min="500" max="5000" step="100" value="1500">
-    <div class="hint">提示在畫面上停留的時間（最大 5000 毫秒）。若同時切換分頁，會在此時間後才切換。</div>
+    <div class="hint" data-i18n="hintDuration"></div>
   </div>
 
   <div class="target-box">
-    <div>目標分頁（被偷看時切換到這裡）：</div>
-    <div class="current" id="target-current">尚未設定</div>
-    <button class="small-btn" id="set-target">把目前分頁設為目標</button>
+    <div data-i18n="targetIntro"></div>
+    <div class="current" id="target-current" data-i18n="targetUnset"></div>
+    <button class="small-btn" id="set-target" data-i18n="btnSetTarget"></button>
   </div>
 
-  <div class="section-title">偵測參數</div>
+  <div class="section-title" data-i18n="sectionDetectParams"></div>
   <div class="field">
-    <label>額外臉孔門檻 <span class="num"><span id="extra-face-val">1</span></span></label>
+    <label><span data-i18n="labelExtraFace"></span> <span class="num"><span id="extra-face-val">1</span></span></label>
     <input type="range" id="extra-face" min="0" max="5" step="1" value="1">
-    <div class="hint">需要幾張「額外」的注視臉孔才觸發。設 1 表示除了你自己，還要有第 2 張臉正面靠近才提醒（建議值，避免自己的臉誤觸發）。設 0 則任何注視臉都觸發。</div>
+    <div class="hint" data-i18n="hintExtraFace"></div>
   </div>
   <div class="field">
-    <label>觸發距離 <span class="num"><span id="dist-val">80</span> cm 以內</span></label>
+    <label><span data-i18n="labelTriggerDist"></span> <span class="num"><span id="dist-val">80</span> <span data-i18n="labelTriggerDistSuffix"></span></span></label>
     <input type="range" id="trigger-distance" min="40" max="150" step="5" value="80">
   </div>
   <div class="row-2">
     <div class="field">
-      <label>持續注視 <span class="num"><span id="hold-val">2.5</span>s</span></label>
+      <label><span data-i18n="labelHold"></span> <span class="num"><span id="hold-val">2.5</span>s</span></label>
       <input type="range" id="hold-seconds" min="0.5" max="6" step="0.5" value="2.5">
     </div>
     <div class="field">
-      <label>冷卻 <span class="num"><span id="cooldown-val">20</span>s</span></label>
+      <label><span data-i18n="labelCooldown"></span> <span class="num"><span id="cooldown-val">20</span>s</span></label>
       <input type="range" id="cooldown-seconds" min="1" max="60" step="1" value="20">
     </div>
   </div>
   <div class="field">
-    <label>正面容許角度 <span class="num">±<span id="yaw-val">22</span>°</span></label>
+    <label><span data-i18n="labelYaw"></span> <span class="num">±<span id="yaw-val">22</span>°</span></label>
     <input type="range" id="yaw-threshold" min="8" max="40" step="2" value="22">
-    <div class="hint">角度越小越要求對方正對鏡頭才觸發，可降低誤判。</div>
+    <div class="hint" data-i18n="hintYaw"></div>
   </div>
   <div class="field">
-    <label>距離校正（焦距）<span class="num"><span id="focal-val">650</span> px</span></label>
+    <label><span data-i18n="labelFocal"></span> <span class="num"><span id="focal-val">650</span> px</span></label>
     <input type="range" id="focal-length" min="400" max="1000" step="10" value="650">
-    <div class="hint">若距離估算偏差，調整此值校正。臉越近時讀數應越小。</div>
+    <div class="hint" data-i18n="hintFocal"></div>
   </div>
 
-  <div class="footer">
-    所有影像分析皆在你的瀏覽器本機完成，<br>不會上傳任何畫面或資料。
-  </div>
+  <div class="footer" data-i18n="footerText"></div>
 
+  <script src="i18n.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

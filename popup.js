@@ -60,7 +60,7 @@ async function loadUI() {
   if (data.targetTabTitle) {
     targetCurrent.textContent = data.targetTabTitle;
   } else {
-    targetCurrent.textContent = "尚未設定（將不切換分頁）";
+    targetCurrent.textContent = chrome.i18n.getMessage("targetUnset");
   }
 
   // 向 background 詢問實際監控狀態
@@ -70,21 +70,21 @@ async function loadUI() {
   });
 
   if (data.lastError) {
-    showError("上次啟動發生錯誤：" + data.lastError);
+    showError(chrome.i18n.getMessage("errLastPrefix") + data.lastError);
   }
 }
 
 function renderState() {
   if (monitoring) {
-    toggleBtn.textContent = "停止";
+    toggleBtn.textContent = chrome.i18n.getMessage("btnStop");
     toggleBtn.classList.add("on");
     stateDot.className = "dot green";
-    stateText.textContent = "監控中";
+    stateText.textContent = chrome.i18n.getMessage("statusMonitoring");
   } else {
-    toggleBtn.textContent = "啟動";
+    toggleBtn.textContent = chrome.i18n.getMessage("btnStart");
     toggleBtn.classList.remove("on");
     stateDot.className = "dot";
-    stateText.textContent = "未啟動";
+    stateText.textContent = chrome.i18n.getMessage("statusIdle");
     faceText.textContent = "—";
     distText.textContent = "—";
     angleText.textContent = "—";
@@ -104,16 +104,16 @@ function clearError() {
 toggleBtn.addEventListener("click", async () => {
   clearError();
   if (!monitoring) {
-    toggleBtn.textContent = "啟動中…";
+    toggleBtn.textContent = chrome.i18n.getMessage("btnStarting");
     chrome.runtime.sendMessage({ type: "POPUP_START" }, (resp) => {
       if (resp?.ok) {
         monitoring = true;
         chrome.storage.local.remove("lastError");
       } else if (resp?.needPermission) {
-        showError("已開啟權限頁分頁，請在該分頁按「允許使用攝影機」。");
+        showError(chrome.i18n.getMessage("errNeedPermission"));
         monitoring = false;
       } else {
-        showError("啟動失敗：" + (resp?.error || "未知錯誤"));
+        showError(chrome.i18n.getMessage("errStartPrefix") + (resp?.error || chrome.i18n.getMessage("errUnknown")));
       }
       renderState();
     });
@@ -177,7 +177,7 @@ $("overlay-duration").addEventListener("change", async (e) => {
 function updateColorLabel() {
   const mode = $("overlay-mode").value;
   const label = document.querySelector("#color-field label");
-  if (label) label.textContent = mode === "border" ? "邊框顏色" : "標示顏色";
+  if (label) label.textContent = chrome.i18n.getMessage(mode === "border" ? "labelColorBorder" : "labelColorMarker");
 }
 updateColorLabel();
 
@@ -208,7 +208,7 @@ chrome.runtime.onMessage.addListener((msg) => {
     if (info.faceFound) {
       const wc = info.watchingCount ?? 0;
       const fc = info.faceCount ?? 1;
-      faceText.innerHTML = `<span class="dot green"></span>${fc} 張（注視 ${wc}）`;
+      faceText.innerHTML = `<span class="dot green"></span>${chrome.i18n.getMessage("faceCountWatching", [String(fc), String(wc)])}`;
       distText.textContent = info.distanceCm ? info.distanceCm + " cm" : "—";
       angleText.textContent = `${info.yaw}° / ${info.pitch}°`;
 
@@ -217,14 +217,14 @@ chrome.runtime.onMessage.addListener((msg) => {
       watchFill.style.width = pct + "%";
       watchFill.style.background = info.watching ? "var(--amber)" : "var(--surface-2)";
     } else {
-      faceText.innerHTML = `<span class="dot"></span>否`;
+      faceText.innerHTML = `<span class="dot"></span>${chrome.i18n.getMessage("faceNone")}`;
       distText.textContent = "—";
       angleText.textContent = "—";
       watchFill.style.width = "0%";
     }
   }
   if (msg.type === "GAZE_ERROR") {
-    showError("偵測錯誤：" + msg.error);
+    showError(chrome.i18n.getMessage("errDetectPrefix") + msg.error);
     monitoring = false;
     renderState();
   }

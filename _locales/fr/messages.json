@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard"
+  },
+  "appDesc": {
+    "message": "Lorsqu'il détecte quelqu'un regardant votre écran à une certaine distance, il affiche une alerte et bascule automatiquement vers un onglet spécifique. Tous les calculs sont effectués localement, aucune image ne quitte votre ordinateur."
+  },
+  "popupSubtitle": {
+    "message": "Gaze Guard · Calcul local"
+  },
+  "btnStart": {
+    "message": "Démarrer"
+  },
+  "btnStop": {
+    "message": "Arrêter"
+  },
+  "btnStarting": {
+    "message": "Démarrage…"
+  },
+  "statusIdle": {
+    "message": "Inactif"
+  },
+  "statusMonitoring": {
+    "message": "Surveillance en cours"
+  },
+  "labelStatus": {
+    "message": "Statut"
+  },
+  "labelFace": {
+    "message": "Visages détectés"
+  },
+  "labelDist": {
+    "message": "Distance estimée"
+  },
+  "labelAngle": {
+    "message": "Orientation (lacet / tangage)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "Action au déclenchement"
+  },
+  "optNotifyAndSwitch": {
+    "message": "Alerte visuelle + Changer d'onglet"
+  },
+  "optOverlayOnly": {
+    "message": "Alerte visuelle uniquement"
+  },
+  "optSwitchOnly": {
+    "message": "Changer d'onglet uniquement"
+  },
+  "sectionOverlayMode": {
+    "message": "Style d'alerte"
+  },
+  "optBorder": {
+    "message": "Bordure lumineuse rotative"
+  },
+  "optMarker": {
+    "message": "Marquer la position du visage"
+  },
+  "labelColorBorder": {
+    "message": "Couleur de la bordure"
+  },
+  "labelColorMarker": {
+    "message": "Couleur du marqueur"
+  },
+  "colorGold": {
+    "message": "Or"
+  },
+  "colorTeal": {
+    "message": "Bleu sarcelle"
+  },
+  "colorRed": {
+    "message": "Rouge"
+  },
+  "labelDuration": {
+    "message": "Durée d'affichage"
+  },
+  "hintDuration": {
+    "message": "Temps de maintien de l'alerte à l'écran (max 5000 ms). Si le changement d'onglet est activé, il s'effectuera après ce délai."
+  },
+  "targetIntro": {
+    "message": "Onglet cible (vers lequel basculer en cas de regard indiscret) :"
+  },
+  "targetUnset": {
+    "message": "Non défini"
+  },
+  "btnSetTarget": {
+    "message": "Définir l'onglet actuel comme cible"
+  },
+  "sectionDetectParams": {
+    "message": "Paramètres de détection"
+  },
+  "labelExtraFace": {
+    "message": "Seuil de visages supplémentaires"
+  },
+  "hintExtraFace": {
+    "message": "Nombre de visages « supplémentaires » requis pour déclencher. 1 signifie qu'un deuxième visage doit regarder de face (recommandé pour éviter que votre propre visage ne déclenche l'alerte). 0 signifie que tout visage regardant déclenche l'alerte."
+  },
+  "labelTriggerDist": {
+    "message": "Distance de déclenchement"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm ou moins"
+  },
+  "labelHold": {
+    "message": "Regard continu"
+  },
+  "labelCooldown": {
+    "message": "Temps de recharge"
+  },
+  "labelYaw": {
+    "message": "Tolérance d'angle frontal"
+  },
+  "hintYaw": {
+    "message": "Plus l'angle est petit, plus la personne doit faire face à la caméra pour déclencher, réduisant ainsi les fausses alertes."
+  },
+  "labelFocal": {
+    "message": "Correction de distance (focale)"
+  },
+  "hintFocal": {
+    "message": "Si l'estimation de la distance est inexacte, ajustez cette valeur. La valeur doit être plus petite lorsque le visage est plus proche."
+  },
+  "footerText": {
+    "message": "Toute l'analyse d'image est effectuée localement dans votre navigateur, aucune image ni donnée n'est téléchargée."
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ ($W$ regardent)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "Échec du démarrage :"
+  },
+  "errUnknown": {
+    "message": "Erreur inconnue"
+  },
+  "errNeedPermission": {
+    "message": "Un onglet de permission s'est ouvert, veuillez y cliquer sur « Autoriser la caméra »."
+  },
+  "errDetectPrefix": {
+    "message": "Erreur de détection :"
+  },
+  "errLastPrefix": {
+    "message": "Erreur lors du dernier démarrage :"
+  },
+  "overlayTitle": {
+    "message": "Quelqu'un regarde votre écran"
+  },
+  "overlayDistNear": {
+    "message": "Courte distance"
+  },
+  "overlayDistAbout": {
+    "message": "Environ $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ personne(s)",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "$COUNT$ détecté(s), quelqu'un regarde la caméra de face à $DIST$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "Quelqu'un regarde la caméra de face à $DIST$",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — Permissions de la caméra"
+  },
+  "permSubtitle": {
+    "message": "La permission de la caméra est requise pour fonctionner"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard a besoin d'accéder à votre <b>caméra</b> pour déterminer localement si quelqu'un s'approche et regarde votre écran.<br><br>Toute l'analyse d'image est <b>entièrement effectuée localement dans votre navigateur</b>, les images ne sont ni enregistrées ni envoyées nulle part."
+  },
+  "permBtnGrant": {
+    "message": "Autoriser la caméra"
+  },
+  "permStatusRequesting": {
+    "message": "Demande de permission en cours…"
+  },
+  "permStatusGranted": {
+    "message": "✓ Permission accordée ! Démarrage de la surveillance…"
+  },
+  "permStatusStarting": {
+    "message": "✓ Surveillance activée, fermeture automatique de cet onglet dans 3 secondes…"
+  },
+  "permHintStarted": {
+    "message": "Cliquez sur l'icône de l'œil dans la barre d'outils pour vérifier le statut ou arrêter la surveillance à tout moment."
+  },
+  "permStatusDenied": {
+    "message": "✗ Permission refusée"
+  },
+  "permHintDenied": {
+    "message": "Si vous l'avez fermée par accident, veuillez cliquer à nouveau sur le bouton.<br>Si le bouton ne répond pas, il se peut qu'il ait été bloqué précédemment : cliquez sur l'icône à gauche de la barre d'adresse → trouvez « Caméra » → changez pour « Autoriser », puis rafraîchissez cette page."
+  },
+  "permStatusNoDevice": {
+    "message": "✗ Aucune caméra trouvée"
+  },
+  "permHintNoDevice": {
+    "message": "Veuillez vérifier que votre ordinateur dispose d'une caméra fonctionnelle et qu'elle n'est pas utilisée par un autre programme."
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ Une erreur s'est produite :"
+  },
+  "notifTitle": {
+    "message": "Quelqu'un regarde votre écran"
+  },
+  "notifBodyNoCount": {
+    "message": "Quelqu'un regarde la caméra de face à $DIST$.",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "Courte distance"
+  },
+  "notifDistAbout": {
+    "message": "Environ $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "Utilisation de la caméra en arrière-plan pour la détection locale des visages afin de déterminer si quelqu'un s'approche et regarde l'écran."
+  },
+  "faceNone": {
+    "message": "Non"
+  }
+}

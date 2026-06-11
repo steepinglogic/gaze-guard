@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard Blickschutz"
+  },
+  "appDesc": {
+    "message": "Zeigt eine Warnung an und wechselt automatisch zu einem bestimmten Tab, wenn jemand innerhalb einer bestimmten Entfernung auf Ihren Bildschirm schaut. Die gesamte Verarbeitung erfolgt lokal, keine Bilder verlassen Ihren Computer."
+  },
+  "popupSubtitle": {
+    "message": "Blickschutz · Lokale Verarbeitung"
+  },
+  "btnStart": {
+    "message": "Starten"
+  },
+  "btnStop": {
+    "message": "Stoppen"
+  },
+  "btnStarting": {
+    "message": "Startet…"
+  },
+  "statusIdle": {
+    "message": "Inaktiv"
+  },
+  "statusMonitoring": {
+    "message": "Überwacht"
+  },
+  "labelStatus": {
+    "message": "Status"
+  },
+  "labelFace": {
+    "message": "Gesichter erkannt"
+  },
+  "labelDist": {
+    "message": "Geschätzte Entfernung"
+  },
+  "labelAngle": {
+    "message": "Ausrichtung (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "Aktion bei Auslösung"
+  },
+  "optNotifyAndSwitch": {
+    "message": "Bildschirmwarnung + Tab wechseln"
+  },
+  "optOverlayOnly": {
+    "message": "Nur Bildschirmwarnung"
+  },
+  "optSwitchOnly": {
+    "message": "Nur Tab wechseln"
+  },
+  "sectionOverlayMode": {
+    "message": "Warnmodus"
+  },
+  "optBorder": {
+    "message": "Animierter Rand im Uhrzeigersinn"
+  },
+  "optMarker": {
+    "message": "Gesichtsposition markieren"
+  },
+  "labelColorBorder": {
+    "message": "Randfarbe"
+  },
+  "labelColorMarker": {
+    "message": "Markierungsfarbe"
+  },
+  "colorGold": {
+    "message": "Gold"
+  },
+  "colorTeal": {
+    "message": "Blaugrün"
+  },
+  "colorRed": {
+    "message": "Rot"
+  },
+  "labelDuration": {
+    "message": "Anzeigedauer"
+  },
+  "hintDuration": {
+    "message": "Zeit, die die Warnung auf dem Bildschirm bleibt (max. 5000 ms). Wenn auch der Tab gewechselt wird, erfolgt der Wechsel nach dieser Zeit."
+  },
+  "targetIntro": {
+    "message": "Ziel-Tab (Wechsel hierhin, wenn Sie beobachtet werden):"
+  },
+  "targetUnset": {
+    "message": "Nicht festgelegt"
+  },
+  "btnSetTarget": {
+    "message": "Aktuellen Tab als Ziel festlegen"
+  },
+  "sectionDetectParams": {
+    "message": "Erkennungsparameter"
+  },
+  "labelExtraFace": {
+    "message": "Schwelle für zusätzliche Gesichter"
+  },
+  "hintExtraFace": {
+    "message": "Gibt an, wie viele „zusätzliche“ betrachtende Gesichter zum Auslösen erforderlich sind. 1 bedeutet, dass neben Ihnen ein zweites Gesicht frontal in der Nähe sein muss (empfohlen, um Fehlauslösungen durch das eigene Gesicht zu vermeiden). Bei 0 löst jedes betrachtende Gesicht aus."
+  },
+  "labelTriggerDist": {
+    "message": "Auslöseentfernung"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm oder weniger"
+  },
+  "labelHold": {
+    "message": "Anhaltender Blick"
+  },
+  "labelCooldown": {
+    "message": "Abklingzeit"
+  },
+  "labelYaw": {
+    "message": "Erlaubter Frontalwinkel"
+  },
+  "hintYaw": {
+    "message": "Ein kleinerer Winkel erfordert, dass die Person direkter in die Kamera schaut, was Fehlauslösungen reduziert."
+  },
+  "labelFocal": {
+    "message": "Entfernungskorrektur (Brennweite)"
+  },
+  "hintFocal": {
+    "message": "Wenn die Entfernungsschätzung abweicht, passen Sie diesen Wert an. Der Messwert sollte kleiner sein, je näher das Gesicht ist."
+  },
+  "footerText": {
+    "message": "Die gesamte Bildanalyse erfolgt lokal in Ihrem Browser. Es werden keine Bilder oder Daten hochgeladen."
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ (davon $W$ beobachtend)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "Start fehlgeschlagen："
+  },
+  "errUnknown": {
+    "message": "Unbekannter Fehler"
+  },
+  "errNeedPermission": {
+    "message": "Der Berechtigungs-Tab wurde geöffnet. Bitte klicken Sie dort auf „Kamera zulassen“."
+  },
+  "errDetectPrefix": {
+    "message": "Erkennungsfehler："
+  },
+  "errLastPrefix": {
+    "message": "Fehler beim letzten Start："
+  },
+  "overlayTitle": {
+    "message": "Jemand schaut auf Ihren Bildschirm"
+  },
+  "overlayDistNear": {
+    "message": "Nahbereich"
+  },
+  "overlayDistAbout": {
+    "message": "Etwa $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ Person(en)",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "$COUNT$ erkannt, Frontalblick in die Kamera aus $DIST$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "Frontalblick in die Kamera aus $DIST$ erkannt",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — Kameraberechtigungen"
+  },
+  "permSubtitle": {
+    "message": "Kameraberechtigung für den Betrieb erforderlich"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard benötigt Zugriff auf Ihre <b>Kamera</b>, um lokal festzustellen, ob sich jemand nähert und auf Ihren Bildschirm schaut.<br><br>Die gesamte Bildanalyse erfolgt <b>vollständig lokal in Ihrem Browser</b>, es werden keine Bilder gespeichert oder irgendwohin hochgeladen."
+  },
+  "permBtnGrant": {
+    "message": "Kamera zulassen"
+  },
+  "permStatusRequesting": {
+    "message": "Berechtigung wird angefordert…"
+  },
+  "permStatusGranted": {
+    "message": "✓ Berechtigung erteilt! Überwachung startet…"
+  },
+  "permStatusStarting": {
+    "message": "✓ Überwachung gestartet, dieser Tab schließt sich automatisch in 3 Sekunden…"
+  },
+  "permHintStarted": {
+    "message": "Klicken Sie auf das Augen-Symbol in der Symbolleiste, um jederzeit den Status zu überprüfen oder die Überwachung zu stoppen."
+  },
+  "permStatusDenied": {
+    "message": "✗ Berechtigung verweigert"
+  },
+  "permHintDenied": {
+    "message": "Falls Sie es versehentlich geschlossen haben, klicken Sie erneut auf die Schaltfläche.<br>Wenn die Schaltfläche nicht reagiert, wurde sie möglicherweise zuvor blockiert: Klicken Sie auf das Symbol links in der Adressleiste → suchen Sie „Kamera“ → ändern Sie es auf „Zulassen“ und aktualisieren Sie diese Seite."
+  },
+  "permStatusNoDevice": {
+    "message": "✗ Kein Kameragerät gefunden"
+  },
+  "permHintNoDevice": {
+    "message": "Bitte stellen Sie sicher, dass Ihr Computer über eine verfügbare Kamera verfügt und diese nicht von einem anderen Programm verwendet wird."
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ Fehler aufgetreten："
+  },
+  "notifTitle": {
+    "message": "Jemand schaut auf Ihren Bildschirm"
+  },
+  "notifBodyNoCount": {
+    "message": "Frontalblick in die Kamera aus $DIST$ erkannt.",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "Nahbereich"
+  },
+  "notifDistAbout": {
+    "message": "Etwa $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "Verwendet die Kamera im Hintergrund zur lokalen Gesichtserkennung, um festzustellen, ob sich jemand nähert und auf den Bildschirm schaut."
+  },
+  "faceNone": {
+    "message": "Nein"
+  }
+}

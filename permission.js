@@ -10,7 +10,7 @@ function setStatus(text, cls) {
 
 async function requestCamera() {
   grantBtn.disabled = true;
-  setStatus("正在請求權限…");
+  setStatus(chrome.i18n.getMessage("permStatusRequesting"));
   try {
     // 在可見分頁中請求權限 — 這裡的權限視窗會明確顯示
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -20,13 +20,12 @@ async function requestCamera() {
     // 立刻關閉，我們只是要取得權限授權，實際偵測在 offscreen 進行
     stream.getTracks().forEach((t) => t.stop());
 
-    setStatus("✓ 權限已授予！正在啟動監控…", "ok");
+    setStatus(chrome.i18n.getMessage("permStatusGranted"), "ok");
 
     // 通知 background：權限已就緒，可以啟動
     chrome.runtime.sendMessage({ type: "PERMISSION_GRANTED" }, () => {
-      setStatus("✓ 監控已啟動，3 秒後自動關閉此分頁…", "ok");
-      hintEl.innerHTML =
-        "點工具列的眼睛圖示可隨時查看狀態或停止監控。";
+      setStatus(chrome.i18n.getMessage("permStatusStarting"), "ok");
+      hintEl.innerHTML = chrome.i18n.getMessage("permHintStarted");
       // 自動關閉這個權限分頁，避免它一直是「當前分頁」導致提示無法注入
       setTimeout(() => {
         chrome.runtime.sendMessage({ type: "CLOSE_PERMISSION_TAB" });
@@ -35,15 +34,13 @@ async function requestCamera() {
   } catch (e) {
     grantBtn.disabled = false;
     if (e.name === "NotAllowedError") {
-      setStatus("✗ 權限被拒絕", "err");
-      hintEl.innerHTML =
-        "若是不小心關掉了，請再按一次按鈕。<br>" +
-        "若按鈕沒反應，可能是之前封鎖過：點網址列左側的圖示 → 找到「攝影機」→ 改為「允許」，再重新整理此頁。";
+      setStatus(chrome.i18n.getMessage("permStatusDenied"), "err");
+      hintEl.innerHTML = chrome.i18n.getMessage("permHintDenied");
     } else if (e.name === "NotFoundError") {
-      setStatus("✗ 找不到攝影機裝置", "err");
-      hintEl.textContent = "請確認電腦有可用的攝影機，且沒有被其他程式佔用。";
+      setStatus(chrome.i18n.getMessage("permStatusNoDevice"), "err");
+      hintEl.textContent = chrome.i18n.getMessage("permHintNoDevice");
     } else {
-      setStatus("✗ 發生錯誤：" + e.message, "err");
+      setStatus(chrome.i18n.getMessage("permStatusErrorPrefix") + e.message, "err");
     }
   }
 }

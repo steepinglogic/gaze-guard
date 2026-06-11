@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard 覗き見ガード"
+  },
+  "appDesc": {
+    "message": "一定の距離内で誰かが画面を覗き込んでいるのを検出すると、アラートを表示し、指定したタブへ自動的に切り替えます。すべての処理はローカルで行われ、画像がPC外部へ送信されることはありません。"
+  },
+  "popupSubtitle": {
+    "message": "覗き見ガード · ローカル処理"
+  },
+  "btnStart": {
+    "message": "開始"
+  },
+  "btnStop": {
+    "message": "停止"
+  },
+  "btnStarting": {
+    "message": "起動中…"
+  },
+  "statusIdle": {
+    "message": "未起動"
+  },
+  "statusMonitoring": {
+    "message": "監視中"
+  },
+  "labelStatus": {
+    "message": "ステータス"
+  },
+  "labelFace": {
+    "message": "検出された顔"
+  },
+  "labelDist": {
+    "message": "推定距離"
+  },
+  "labelAngle": {
+    "message": "向き (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "トリガー時の動作"
+  },
+  "optNotifyAndSwitch": {
+    "message": "画面アラート + タブ切り替え"
+  },
+  "optOverlayOnly": {
+    "message": "画面アラートのみ"
+  },
+  "optSwitchOnly": {
+    "message": "タブ切り替えのみ"
+  },
+  "sectionOverlayMode": {
+    "message": "アラートの表示方法"
+  },
+  "optBorder": {
+    "message": "枠線が時計回りに光る"
+  },
+  "optMarker": {
+    "message": "顔の位置をマーク"
+  },
+  "labelColorBorder": {
+    "message": "枠線の色"
+  },
+  "labelColorMarker": {
+    "message": "マークの色"
+  },
+  "colorGold": {
+    "message": "ゴールド"
+  },
+  "colorTeal": {
+    "message": "青緑"
+  },
+  "colorRed": {
+    "message": "赤"
+  },
+  "labelDuration": {
+    "message": "表示時間"
+  },
+  "hintDuration": {
+    "message": "アラートが画面に表示される時間（最大5000ミリ秒）。タブ切り替えを同時に行う場合、この時間の経過後にタブが切り替わります。"
+  },
+  "targetIntro": {
+    "message": "ターゲットタブ（覗き見された際にここに切り替わります）："
+  },
+  "targetUnset": {
+    "message": "未設定"
+  },
+  "btnSetTarget": {
+    "message": "現在のタブをターゲットに設定"
+  },
+  "sectionDetectParams": {
+    "message": "検出パラメータ"
+  },
+  "labelExtraFace": {
+    "message": "追加の顔のしきい値"
+  },
+  "hintExtraFace": {
+    "message": "「追加の」覗き込み顔がいくつ検出されたらトリガーするかを指定します。1に設定すると、自分以外の2人目の顔が正面から近づいた場合にのみアラートを出します（自身の顔による誤作動を防ぐための推奨値）。0に設定すると、注視している顔が検出されるたびにトリガーされます。"
+  },
+  "labelTriggerDist": {
+    "message": "トリガー距離"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm 以内"
+  },
+  "labelHold": {
+    "message": "継続注視時間"
+  },
+  "labelCooldown": {
+    "message": "クールダウン"
+  },
+  "labelYaw": {
+    "message": "正面許容角度"
+  },
+  "hintYaw": {
+    "message": "角度が小さいほど、相手がカメラを正面から見ている必要があります。これにより誤検知を減らすことができます。"
+  },
+  "labelFocal": {
+    "message": "距離キャリブレーション（焦点距離）"
+  },
+  "hintFocal": {
+    "message": "距離の推定値に誤差がある場合は、この値を調整して補正してください。顔が近いほど値は小さくなります。"
+  },
+  "footerText": {
+    "message": "すべての画像解析はブラウザのローカルで完結し、画像やデータがアップロードされることはありません。"
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ 人（注視 $W$）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "起動失敗："
+  },
+  "errUnknown": {
+    "message": "不明なエラー"
+  },
+  "errNeedPermission": {
+    "message": "権限設定のタブを開きました。該当タブで「カメラの使用を許可する」をクリックしてください。"
+  },
+  "errDetectPrefix": {
+    "message": "検出エラー："
+  },
+  "errLastPrefix": {
+    "message": "前回の起動時にエラーが発生しました："
+  },
+  "overlayTitle": {
+    "message": "誰かがあなたの画面を見ています"
+  },
+  "overlayDistNear": {
+    "message": "至近距離"
+  },
+  "overlayDistAbout": {
+    "message": "約 $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ 人",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "$COUNT$ を検出、$DIST$ の距離で誰かがカメラを正面から見ています",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "$DIST$ の距離で誰かがカメラを正面から見ています",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — カメラの権限"
+  },
+  "permSubtitle": {
+    "message": "動作にはカメラの権限が必要です"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard は、誰かが画面に近づいて見ているかをローカルで判定するために、<b>カメラ</b>へのアクセスが必要です。<br><br>すべての画像解析は<b>ブラウザのローカル内で完全に完結</b>し、画像が保存されたり外部にアップロードされたりすることはありません。"
+  },
+  "permBtnGrant": {
+    "message": "カメラの使用を許可する"
+  },
+  "permStatusRequesting": {
+    "message": "権限をリクエスト中…"
+  },
+  "permStatusGranted": {
+    "message": "✓ 権限が付与されました！監視を開始しています…"
+  },
+  "permStatusStarting": {
+    "message": "✓ 監視が開始されました。3秒後にこのタブを自動で閉じます…"
+  },
+  "permHintStarted": {
+    "message": "ツールバーの目のアイコンをクリックすると、いつでもステータスの確認や監視の停止ができます。"
+  },
+  "permStatusDenied": {
+    "message": "✗ 権限が拒否されました"
+  },
+  "permHintDenied": {
+    "message": "誤って閉じてしまった場合は、もう一度ボタンをクリックしてください。<br>ボタンが反応しない場合は、過去にブロックした可能性があります。アドレスバー左側のアイコンをクリック →「カメラ」を見つけて「許可」に変更し、このページを再読み込みしてください。"
+  },
+  "permStatusNoDevice": {
+    "message": "✗ カメラデバイスが見つかりません"
+  },
+  "permHintNoDevice": {
+    "message": "PCに利用可能なカメラがあること、および他のプログラムに占有されていないことを確認してください。"
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ エラーが発生しました："
+  },
+  "notifTitle": {
+    "message": "誰かがあなたの画面を見ています"
+  },
+  "notifBodyNoCount": {
+    "message": "$DIST$ の距離で誰かがカメラを正面から見ています。",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "至近距離"
+  },
+  "notifDistAbout": {
+    "message": "約 $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "バックグラウンドでカメラを使用し、ローカルでの顔検出によって誰かが画面に近づいて見ているかを判定します。"
+  },
+  "faceNone": {
+    "message": "なし"
+  }
+}

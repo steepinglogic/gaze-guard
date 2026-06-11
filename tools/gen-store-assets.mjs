@@ -1,12 +1,31 @@
 import { chromium } from "playwright";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { readFileSync } from "node:fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const out = path.join(root, "store-assets");
 
+const localeCode = process.env.LOCALE || "zh_TW";
+const localeMessages = JSON.parse(readFileSync(path.join(root, `_locales/${localeCode}/messages.json`), "utf8"));
+
 const chromeStub = `
+  const __i18nMessages = ${JSON.stringify(localeMessages)};
+  function __getMessage(key, subs) {
+    const entry = __i18nMessages[key];
+    if (!entry) return "";
+    let s = entry.message;
+    if (entry.placeholders && Array.isArray(subs)) {
+      for (const [name, def] of Object.entries(entry.placeholders)) {
+        const i = parseInt(String(def.content).replace("$", ""), 10) - 1;
+        const token = "$" + name.toUpperCase() + "$";
+        s = s.split(token).join(subs[i] ?? "");
+      }
+    }
+    return s;
+  }
+
   window.chrome = {
     storage: {
       local: {
@@ -46,6 +65,10 @@ const chromeStub = `
       create() {},
       query() { return Promise.resolve([{ id: 1, title: "Demo", url: "about:blank" }]); },
     },
+    i18n: {
+      getMessage: __getMessage,
+      getUILanguage: () => "${localeCode.replace('_', '-')}",
+    },
   };
 `;
 
@@ -79,13 +102,20 @@ const fileUrl = (rel) => "file://" + path.join(root, rel);
         await frame.waitForLoadState("load");
         await frame.evaluate(() => {
           const $ = (id) => document.getElementById(id);
-          $("face-text").innerHTML = '<span class="dot green"></span>2 張（注視 1）';
+          const g = (k, subs) => chrome.i18n.getMessage(k, subs) || k;
+          $("face-text").innerHTML = `<span class="dot green"></span>${g("faceCountWatching", ["2", "1"])}`;
           $("dist-text").textContent = "82 cm";
           $("angle-text").textContent = "3.2° / -1.8°";
           $("watch-fill").style.width = "62%";
           $("watch-fill").style.background = "var(--amber)";
           const target = document.getElementById("target-current");
           if (target) target.textContent = "Pinned · 安全分頁 (預設)";
+          const stateText = $("state-text");
+          if (stateText) stateText.textContent = g("statusMonitoring");
+          const stateDot = $("state-dot");
+          if (stateDot) stateDot.className = "dot green";
+          const toggleBtn = $("toggle");
+          if (toggleBtn) { toggleBtn.textContent = g("btnStop"); toggleBtn.classList.add("on"); }
         });
       },
       settleMs: 500,

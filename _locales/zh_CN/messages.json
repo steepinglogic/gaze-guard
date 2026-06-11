@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard 窥探守卫"
+  },
+  "appDesc": {
+    "message": "检测到一定距离内有人盯着你的屏幕时，显示提醒并自动切换到指定标签页。所有计算在本地完成，图像不离开你的电脑。"
+  },
+  "popupSubtitle": {
+    "message": "窥探守卫 · 本地计算"
+  },
+  "btnStart": {
+    "message": "启动"
+  },
+  "btnStop": {
+    "message": "停止"
+  },
+  "btnStarting": {
+    "message": "启动中…"
+  },
+  "statusIdle": {
+    "message": "未启动"
+  },
+  "statusMonitoring": {
+    "message": "监控中"
+  },
+  "labelStatus": {
+    "message": "状态"
+  },
+  "labelFace": {
+    "message": "检测到人脸"
+  },
+  "labelDist": {
+    "message": "估算距离"
+  },
+  "labelAngle": {
+    "message": "朝向 (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "触发后动作"
+  },
+  "optNotifyAndSwitch": {
+    "message": "画面提示 + 切换标签页"
+  },
+  "optOverlayOnly": {
+    "message": "只显示画面提示"
+  },
+  "optSwitchOnly": {
+    "message": "只切换标签页"
+  },
+  "sectionOverlayMode": {
+    "message": "提示方式"
+  },
+  "optBorder": {
+    "message": "边框顺时针跑光"
+  },
+  "optMarker": {
+    "message": "标示人脸位置"
+  },
+  "labelColorBorder": {
+    "message": "边框颜色"
+  },
+  "labelColorMarker": {
+    "message": "标示颜色"
+  },
+  "colorGold": {
+    "message": "金色"
+  },
+  "colorTeal": {
+    "message": "青绿色"
+  },
+  "colorRed": {
+    "message": "红色"
+  },
+  "labelDuration": {
+    "message": "显示时间"
+  },
+  "hintDuration": {
+    "message": "提示在画面上停留的时间（最大 5000 毫秒）。若同时切换标签页，会在此时间后才切换。"
+  },
+  "targetIntro": {
+    "message": "目标标签页（被偷看时切换到这里）："
+  },
+  "targetUnset": {
+    "message": "尚未设置"
+  },
+  "btnSetTarget": {
+    "message": "把当前标签页设为目标"
+  },
+  "sectionDetectParams": {
+    "message": "检测参数"
+  },
+  "labelExtraFace": {
+    "message": "额外人脸阈值"
+  },
+  "hintExtraFace": {
+    "message": "需要几张“额外”的注视人脸才触发。设 1 表示除了你自己，还要有第 2 张脸正面靠近才提醒（建议值，避免自己的脸误触发）。设 0 则任何注视脸都触发。"
+  },
+  "labelTriggerDist": {
+    "message": "触发距离"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm 以内"
+  },
+  "labelHold": {
+    "message": "持续注视"
+  },
+  "labelCooldown": {
+    "message": "冷却"
+  },
+  "labelYaw": {
+    "message": "正面容许角度"
+  },
+  "hintYaw": {
+    "message": "角度越小越要求对方正对镜头才触发，可降低误判。"
+  },
+  "labelFocal": {
+    "message": "距离校正（焦距）"
+  },
+  "hintFocal": {
+    "message": "若距离估算偏差，调整此值校正。脸越近时读数应越小。"
+  },
+  "footerText": {
+    "message": "所有图像分析皆在你的浏览器本地完成，不会上传任何画面或数据。"
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ 张（注视 $W$）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "启动失败："
+  },
+  "errUnknown": {
+    "message": "未知错误"
+  },
+  "errNeedPermission": {
+    "message": "已打开权限页标签页，请在该标签页按“允许使用摄像头”。"
+  },
+  "errDetectPrefix": {
+    "message": "检测错误："
+  },
+  "errLastPrefix": {
+    "message": "上次启动发生错误："
+  },
+  "overlayTitle": {
+    "message": "有人正在看你的屏幕"
+  },
+  "overlayDistNear": {
+    "message": "近距离"
+  },
+  "overlayDistAbout": {
+    "message": "约 $CM$ 厘米",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ 人",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "检测到 $COUNT$，$DIST$ 处有人正面注视镜头",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "检测到 $DIST$ 处有人正面注视镜头",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — 摄像头权限"
+  },
+  "permSubtitle": {
+    "message": "需要摄像头权限才能运行"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard 需要访问你的<b>摄像头</b>，以便在本地判断是否有人靠近并注视你的屏幕。<br><br>所有图像分析<b>完全在你的浏览器本地完成</b>，画面不会被保存或上传到任何地方。"
+  },
+  "permBtnGrant": {
+    "message": "允许使用摄像头"
+  },
+  "permStatusRequesting": {
+    "message": "正在请求权限…"
+  },
+  "permStatusGranted": {
+    "message": "✓ 权限已授予！正在启动监控…"
+  },
+  "permStatusStarting": {
+    "message": "✓ 监控已启动，3 秒后自动关闭此标签页…"
+  },
+  "permHintStarted": {
+    "message": "点工具栏的眼睛图标可随时查看状态或停止监控。"
+  },
+  "permStatusDenied": {
+    "message": "✗ 权限被拒绝"
+  },
+  "permHintDenied": {
+    "message": "若是不小心关掉了，请再按一次按钮。<br>若按钮没反应，可能是之前阻止过：点地址栏左侧的图标 → 找到“摄像头”→ 改为“允许”，再刷新此页。"
+  },
+  "permStatusNoDevice": {
+    "message": "✗ 找不到摄像头设备"
+  },
+  "permHintNoDevice": {
+    "message": "请确认电脑有可用的摄像头，且没有被其他程序占用。"
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ 发生错误："
+  },
+  "notifTitle": {
+    "message": "有人在看你的屏幕"
+  },
+  "notifBodyNoCount": {
+    "message": "检测到 $DIST$ 处有人正面注视镜头。",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "近距离"
+  },
+  "notifDistAbout": {
+    "message": "约 $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "在后台使用摄像头进行本地人脸检测，以判断是否有人靠近并注视屏幕。"
+  },
+  "faceNone": {
+    "message": "否"
+  }
+}

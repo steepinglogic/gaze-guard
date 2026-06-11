@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-i18n-doc-title="permPageTitle">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaze Guard — 攝影機權限</title>
+  <title>Gaze Guard</title>
   <style>
     :root {
       --bg: #16140f;
@@ -99,19 +99,17 @@
   <div class="card">
     <div class="eye">👁</div>
     <h1>Gaze Guard</h1>
-    <div class="sub">需要攝影機權限才能運作</div>
+    <div class="sub" data-i18n="permSubtitle"></div>
 
-    <div class="desc">
-      Gaze Guard 需要存取你的<b>攝影機</b>，以便在本機判斷是否有人靠近並注視你的螢幕。<br><br>
-      所有影像分析<b>完全在你的瀏覽器本機完成</b>，畫面不會被儲存或上傳到任何地方。
-    </div>
+<div class="desc" data-i18n-html="permDescHtml"></div>
 
-    <button id="grant">允許使用攝影機</button>
+    <button id="grant" data-i18n="permBtnGrant"></button>
     <div class="status" id="status"></div>
 
     <div class="hint" id="hint"></div>
   </div>
 
+  <script src="i18n.js"></script>
   <script src="permission.js"></script>
 </body>
 </html>

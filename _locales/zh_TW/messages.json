@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard 窺探守衛"
+  },
+  "appDesc": {
+    "message": "偵測到一定距離內有人盯著你的螢幕時，顯示提醒並自動切換到指定分頁。所有運算在本機完成，影像不離開你的電腦。"
+  },
+  "popupSubtitle": {
+    "message": "窺探守衛 · 本機運算"
+  },
+  "btnStart": {
+    "message": "啟動"
+  },
+  "btnStop": {
+    "message": "停止"
+  },
+  "btnStarting": {
+    "message": "啟動中…"
+  },
+  "statusIdle": {
+    "message": "未啟動"
+  },
+  "statusMonitoring": {
+    "message": "監控中"
+  },
+  "labelStatus": {
+    "message": "狀態"
+  },
+  "labelFace": {
+    "message": "偵測到人臉"
+  },
+  "labelDist": {
+    "message": "估算距離"
+  },
+  "labelAngle": {
+    "message": "朝向 (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "觸發後動作"
+  },
+  "optNotifyAndSwitch": {
+    "message": "畫面提示 + 切換分頁"
+  },
+  "optOverlayOnly": {
+    "message": "只顯示畫面提示"
+  },
+  "optSwitchOnly": {
+    "message": "只切換分頁"
+  },
+  "sectionOverlayMode": {
+    "message": "提示方式"
+  },
+  "optBorder": {
+    "message": "邊框順時針跑光"
+  },
+  "optMarker": {
+    "message": "標示人臉位置"
+  },
+  "labelColorBorder": {
+    "message": "邊框顏色"
+  },
+  "labelColorMarker": {
+    "message": "標示顏色"
+  },
+  "colorGold": {
+    "message": "金色"
+  },
+  "colorTeal": {
+    "message": "青綠色"
+  },
+  "colorRed": {
+    "message": "紅色"
+  },
+  "labelDuration": {
+    "message": "顯示時間"
+  },
+  "hintDuration": {
+    "message": "提示在畫面上停留的時間（最大 5000 毫秒）。若同時切換分頁，會在此時間後才切換。"
+  },
+  "targetIntro": {
+    "message": "目標分頁（被偷看時切換到這裡）："
+  },
+  "targetUnset": {
+    "message": "尚未設定"
+  },
+  "btnSetTarget": {
+    "message": "把目前分頁設為目標"
+  },
+  "sectionDetectParams": {
+    "message": "偵測參數"
+  },
+  "labelExtraFace": {
+    "message": "額外臉孔門檻"
+  },
+  "hintExtraFace": {
+    "message": "需要幾張「額外」的注視臉孔才觸發。設 1 表示除了你自己，還要有第 2 張臉正面靠近才提醒（建議值，避免自己的臉誤觸發）。設 0 則任何注視臉都觸發。"
+  },
+  "labelTriggerDist": {
+    "message": "觸發距離"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm 以內"
+  },
+  "labelHold": {
+    "message": "持續注視"
+  },
+  "labelCooldown": {
+    "message": "冷卻"
+  },
+  "labelYaw": {
+    "message": "正面容許角度"
+  },
+  "hintYaw": {
+    "message": "角度越小越要求對方正對鏡頭才觸發，可降低誤判。"
+  },
+  "labelFocal": {
+    "message": "距離校正（焦距）"
+  },
+  "hintFocal": {
+    "message": "若距離估算偏差，調整此值校正。臉越近時讀數應越小。"
+  },
+  "footerText": {
+    "message": "所有影像分析皆在你的瀏覽器本機完成，不會上傳任何畫面或資料。"
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ 張（注視 $W$）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "啟動失敗："
+  },
+  "errUnknown": {
+    "message": "未知錯誤"
+  },
+  "errNeedPermission": {
+    "message": "已開啟權限頁分頁，請在該分頁按「允許使用攝影機」。"
+  },
+  "errDetectPrefix": {
+    "message": "偵測錯誤："
+  },
+  "errLastPrefix": {
+    "message": "上次啟動發生錯誤："
+  },
+  "overlayTitle": {
+    "message": "有人正在看你的螢幕"
+  },
+  "overlayDistNear": {
+    "message": "近距離"
+  },
+  "overlayDistAbout": {
+    "message": "約 $CM$ 公分",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ 人",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "偵測到 $COUNT$，$DIST$ 處有人正面注視鏡頭",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "偵測到 $DIST$ 處有人正面注視鏡頭",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — 攝影機權限"
+  },
+  "permSubtitle": {
+    "message": "需要攝影機權限才能運作"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard 需要存取你的<b>攝影機</b>，以便在本機判斷是否有人靠近並注視你的螢幕。<br><br>所有影像分析<b>完全在你的瀏覽器本機完成</b>，畫面不會被儲存或上傳到任何地方。"
+  },
+  "permBtnGrant": {
+    "message": "允許使用攝影機"
+  },
+  "permStatusRequesting": {
+    "message": "正在請求權限…"
+  },
+  "permStatusGranted": {
+    "message": "✓ 權限已授予！正在啟動監控…"
+  },
+  "permStatusStarting": {
+    "message": "✓ 監控已啟動，3 秒後自動關閉此分頁…"
+  },
+  "permHintStarted": {
+    "message": "點工具列的眼睛圖示可隨時查看狀態或停止監控。"
+  },
+  "permStatusDenied": {
+    "message": "✗ 權限被拒絕"
+  },
+  "permHintDenied": {
+    "message": "若是不小心關掉了，請再按一次按鈕。<br>若按鈕沒反應，可能是之前封鎖過：點網址列左側的圖示 → 找到「攝影機」→ 改為「允許」，再重新整理此頁。"
+  },
+  "permStatusNoDevice": {
+    "message": "✗ 找不到攝影機裝置"
+  },
+  "permHintNoDevice": {
+    "message": "請確認電腦有可用的攝影機，且沒有被其他程式佔用。"
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ 發生錯誤："
+  },
+  "notifTitle": {
+    "message": "有人在看你的螢幕"
+  },
+  "notifBodyNoCount": {
+    "message": "偵測到 $DIST$ 處有人正面注視鏡頭。",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "近距離"
+  },
+  "notifDistAbout": {
+    "message": "約 $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "在背景使用攝影機進行本機人臉偵測，以判斷是否有人靠近並注視螢幕。"
+  },
+  "faceNone": {
+    "message": "否"
+  }
+}

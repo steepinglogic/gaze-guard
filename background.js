@@ -14,8 +14,7 @@ async function ensureOffscreen() {
   await chrome.offscreen.createDocument({
     url: "offscreen.html",
     reasons: ["USER_MEDIA"],
-    justification:
-      "在背景使用攝影機進行本機人臉偵測，以判斷是否有人靠近並注視螢幕。",
+    justification: chrome.i18n.getMessage("offscreenJustification"),
   });
 }
 
@@ -191,12 +190,14 @@ async function showOverlayOnTab(tab, info, overlayOpts) {
 
 // 系統通知（覆蓋層無法注入時的備援）
 function showSystemNotification(info) {
-  const distText = info.distanceCm ? `約 ${info.distanceCm} cm` : "近距離";
+  const distText = info.distanceCm
+    ? chrome.i18n.getMessage("notifDistAbout", [String(info.distanceCm)])
+    : chrome.i18n.getMessage("notifDistNear");
   chrome.notifications.create("gaze-alert-" + Date.now(), {
     type: "basic",
     iconUrl: "icons/icon128.png",
-    title: "有人在看你的螢幕",
-    message: `偵測到${distText}處有人正面注視鏡頭。`,
+    title: chrome.i18n.getMessage("notifTitle"),
+    message: chrome.i18n.getMessage("notifBodyNoCount", [distText]),
     priority: 2,
   });
 }

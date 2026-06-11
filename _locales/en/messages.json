@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard"
+  },
+  "appDesc": {
+    "message": "Shows an alert and automatically switches to a designated tab when someone is staring at your screen within a certain distance. All processing is done locally; no images leave your device."
+  },
+  "popupSubtitle": {
+    "message": "Gaze Guard · Local Processing"
+  },
+  "btnStart": {
+    "message": "Start"
+  },
+  "btnStop": {
+    "message": "Stop"
+  },
+  "btnStarting": {
+    "message": "Starting..."
+  },
+  "statusIdle": {
+    "message": "Idle"
+  },
+  "statusMonitoring": {
+    "message": "Monitoring"
+  },
+  "labelStatus": {
+    "message": "Status"
+  },
+  "labelFace": {
+    "message": "Faces Detected"
+  },
+  "labelDist": {
+    "message": "Estimated Distance"
+  },
+  "labelAngle": {
+    "message": "Orientation (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "Trigger Action"
+  },
+  "optNotifyAndSwitch": {
+    "message": "Visual Alert + Switch Tab"
+  },
+  "optOverlayOnly": {
+    "message": "Visual Alert Only"
+  },
+  "optSwitchOnly": {
+    "message": "Switch Tab Only"
+  },
+  "sectionOverlayMode": {
+    "message": "Alert Style"
+  },
+  "optBorder": {
+    "message": "Clockwise Border Glow"
+  },
+  "optMarker": {
+    "message": "Mark Face Position"
+  },
+  "labelColorBorder": {
+    "message": "Border Color"
+  },
+  "labelColorMarker": {
+    "message": "Marker Color"
+  },
+  "colorGold": {
+    "message": "Gold"
+  },
+  "colorTeal": {
+    "message": "Teal"
+  },
+  "colorRed": {
+    "message": "Red"
+  },
+  "labelDuration": {
+    "message": "Display Duration"
+  },
+  "hintDuration": {
+    "message": "How long the alert stays on screen (max 5000 ms). If switching tabs is enabled, it will switch after this duration."
+  },
+  "targetIntro": {
+    "message": "Target Tab (switches here when peeked):"
+  },
+  "targetUnset": {
+    "message": "Not set"
+  },
+  "btnSetTarget": {
+    "message": "Set current tab as target"
+  },
+  "sectionDetectParams": {
+    "message": "Detection Parameters"
+  },
+  "labelExtraFace": {
+    "message": "Extra Face Threshold"
+  },
+  "hintExtraFace": {
+    "message": "How many 'extra' watching faces are required to trigger. Set to 1 to require a second face looking directly at the screen besides yours (recommended, prevents self-triggering). Set to 0 to trigger on any watching face."
+  },
+  "labelTriggerDist": {
+    "message": "Trigger Distance"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm or less"
+  },
+  "labelHold": {
+    "message": "Hold Duration"
+  },
+  "labelCooldown": {
+    "message": "Cooldown"
+  },
+  "labelYaw": {
+    "message": "Frontal Yaw Tolerance"
+  },
+  "hintYaw": {
+    "message": "A smaller angle requires the person to face the camera more directly to trigger, reducing false positives."
+  },
+  "labelFocal": {
+    "message": "Distance Calibration (Focal Length)"
+  },
+  "hintFocal": {
+    "message": "Adjust this if the estimated distance is inaccurate. The reading should decrease as the face gets closer."
+  },
+  "footerText": {
+    "message": "All image analysis is processed locally in your browser. No images or data are uploaded."
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ ($W$ watching)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "Start failed: "
+  },
+  "errUnknown": {
+    "message": "Unknown error"
+  },
+  "errNeedPermission": {
+    "message": "A permissions tab has been opened. Please click 'Allow' for camera access there."
+  },
+  "errDetectPrefix": {
+    "message": "Detection error: "
+  },
+  "errLastPrefix": {
+    "message": "Error from last start: "
+  },
+  "overlayTitle": {
+    "message": "Someone is looking at your screen"
+  },
+  "overlayDistNear": {
+    "message": "at close range"
+  },
+  "overlayDistAbout": {
+    "message": "about $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ people",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "Detected $COUNT$, looking directly at the camera from $DIST$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "Someone is looking directly at the camera from $DIST$",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — Camera Permissions"
+  },
+  "permSubtitle": {
+    "message": "Camera permission is required to operate"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard requires access to your <b>camera</b> to locally detect if someone is approaching and looking at your screen.<br><br>All image analysis is <b>processed entirely locally in your browser</b>. No images are saved or uploaded anywhere."
+  },
+  "permBtnGrant": {
+    "message": "Allow Camera Access"
+  },
+  "permStatusRequesting": {
+    "message": "Requesting permissions..."
+  },
+  "permStatusGranted": {
+    "message": "✓ Permission granted! Starting monitoring..."
+  },
+  "permStatusStarting": {
+    "message": "✓ Monitoring started. Closing this tab in 3 seconds..."
+  },
+  "permHintStarted": {
+    "message": "Click the eye icon in the toolbar anytime to check status or stop monitoring."
+  },
+  "permStatusDenied": {
+    "message": "✗ Permission denied"
+  },
+  "permHintDenied": {
+    "message": "If you accidentally dismissed the prompt, click the button again.<br>If the button doesn't work, it might have been blocked previously: click the icon on the left side of the address bar → find 'Camera' → change to 'Allow', then refresh this page."
+  },
+  "permStatusNoDevice": {
+    "message": "✗ No camera device found"
+  },
+  "permHintNoDevice": {
+    "message": "Please ensure your computer has an available camera that isn't being used by another application."
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ An error occurred: "
+  },
+  "notifTitle": {
+    "message": "Someone is looking at your screen"
+  },
+  "notifBodyNoCount": {
+    "message": "Someone is looking directly at the camera from $DIST$.",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "at close range"
+  },
+  "notifDistAbout": {
+    "message": "about $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "Uses the camera in the background for local face detection to determine if someone is approaching and looking at the screen."
+  },
+  "faceNone": {
+    "message": "No"
+  }
+}

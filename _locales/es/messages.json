@@ -1,0 +1,262 @@
+{
+  "appName": {
+    "message": "Gaze Guard"
+  },
+  "appDesc": {
+    "message": "Muestra una alerta y cambia automáticamente a una pestaña específica cuando detecta que alguien mira tu pantalla a cierta distancia. Todo el procesamiento se realiza localmente; las imágenes no salen de tu dispositivo."
+  },
+  "popupSubtitle": {
+    "message": "Gaze Guard · Procesamiento local"
+  },
+  "btnStart": {
+    "message": "Iniciar"
+  },
+  "btnStop": {
+    "message": "Detener"
+  },
+  "btnStarting": {
+    "message": "Iniciando…"
+  },
+  "statusIdle": {
+    "message": "Inactivo"
+  },
+  "statusMonitoring": {
+    "message": "Monitorizando"
+  },
+  "labelStatus": {
+    "message": "Estado"
+  },
+  "labelFace": {
+    "message": "Rostros detectados"
+  },
+  "labelDist": {
+    "message": "Distancia estimada"
+  },
+  "labelAngle": {
+    "message": "Orientación (yaw / pitch)"
+  },
+  "kofiSupport": {
+    "message": "Support me on Ko-fi"
+  },
+  "sectionAction": {
+    "message": "Acción al activar"
+  },
+  "optNotifyAndSwitch": {
+    "message": "Alerta visual + Cambiar pestaña"
+  },
+  "optOverlayOnly": {
+    "message": "Solo alerta visual"
+  },
+  "optSwitchOnly": {
+    "message": "Solo cambiar pestaña"
+  },
+  "sectionOverlayMode": {
+    "message": "Estilo de alerta"
+  },
+  "optBorder": {
+    "message": "Borde animado"
+  },
+  "optMarker": {
+    "message": "Marcar posición del rostro"
+  },
+  "labelColorBorder": {
+    "message": "Color del borde"
+  },
+  "labelColorMarker": {
+    "message": "Color del marcador"
+  },
+  "colorGold": {
+    "message": "Dorado"
+  },
+  "colorTeal": {
+    "message": "Verde azulado"
+  },
+  "colorRed": {
+    "message": "Rojo"
+  },
+  "labelDuration": {
+    "message": "Duración"
+  },
+  "hintDuration": {
+    "message": "Tiempo que la alerta permanece en pantalla (máx. 5000 ms). Si también se cambia de pestaña, el cambio ocurrirá después de este tiempo."
+  },
+  "targetIntro": {
+    "message": "Pestaña de destino (cambiará a esta al ser espiado):"
+  },
+  "targetUnset": {
+    "message": "No configurada"
+  },
+  "btnSetTarget": {
+    "message": "Establecer pestaña actual como destino"
+  },
+  "sectionDetectParams": {
+    "message": "Parámetros de detección"
+  },
+  "labelExtraFace": {
+    "message": "Umbral de rostros extra"
+  },
+  "hintExtraFace": {
+    "message": "Número de rostros \"extra\" mirando para activar. 1 significa que además de ti, otro rostro de frente activará la alerta (recomendado para evitar falsos positivos con tu propio rostro). 0 activa con cualquier rostro mirando."
+  },
+  "labelTriggerDist": {
+    "message": "Distancia de activación"
+  },
+  "labelTriggerDistSuffix": {
+    "message": "cm o menos"
+  },
+  "labelHold": {
+    "message": "Mirada continua"
+  },
+  "labelCooldown": {
+    "message": "Enfriamiento"
+  },
+  "labelYaw": {
+    "message": "Tolerancia de ángulo frontal"
+  },
+  "hintYaw": {
+    "message": "Un ángulo menor exige que la persona mire más directamente a la cámara para activar, reduciendo falsas alarmas."
+  },
+  "labelFocal": {
+    "message": "Calibración de distancia (Focal)"
+  },
+  "hintFocal": {
+    "message": "Ajusta este valor si la distancia estimada es inexacta. La lectura debería ser menor cuanto más cerca esté el rostro."
+  },
+  "footerText": {
+    "message": "Todo el análisis de imágenes se realiza localmente en tu navegador. No se sube ningún dato o imagen."
+  },
+  "faceCountWatching": {
+    "message": "$COUNT$ ($W$ mirando)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "w": {
+        "content": "$2"
+      }
+    }
+  },
+  "errStartPrefix": {
+    "message": "Error al iniciar："
+  },
+  "errUnknown": {
+    "message": "Error desconocido"
+  },
+  "errNeedPermission": {
+    "message": "Se ha abierto la pestaña de permisos. Por favor, haz clic en \"Permitir acceso a la cámara\" en esa pestaña."
+  },
+  "errDetectPrefix": {
+    "message": "Error de detección："
+  },
+  "errLastPrefix": {
+    "message": "Error en el último inicio："
+  },
+  "overlayTitle": {
+    "message": "Alguien está mirando tu pantalla"
+  },
+  "overlayDistNear": {
+    "message": "Cerca"
+  },
+  "overlayDistAbout": {
+    "message": "Aprox. $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlayCount": {
+    "message": "$N$ persona(s)",
+    "placeholders": {
+      "n": {
+        "content": "$1"
+      }
+    }
+  },
+  "overlaySubWithCount": {
+    "message": "Se detectó a $COUNT$ mirando de frente a $DIST$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "dist": {
+        "content": "$2"
+      }
+    }
+  },
+  "overlaySubNoCount": {
+    "message": "Se detectó a alguien mirando de frente a $DIST$",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "permPageTitle": {
+    "message": "Gaze Guard — Permiso de cámara"
+  },
+  "permSubtitle": {
+    "message": "Requiere acceso a la cámara para funcionar"
+  },
+  "permDescHtml": {
+    "message": "Gaze Guard necesita acceso a tu <b>cámara</b> para detectar localmente si alguien se acerca y mira tu pantalla.<br><br>Todo el análisis de imágenes se realiza <b>completamente de forma local en tu navegador</b>, y ninguna imagen se guarda ni se sube a ningún lado."
+  },
+  "permBtnGrant": {
+    "message": "Permitir acceso a la cámara"
+  },
+  "permStatusRequesting": {
+    "message": "Solicitando permisos…"
+  },
+  "permStatusGranted": {
+    "message": "✓ ¡Permiso concedido! Iniciando monitorización…"
+  },
+  "permStatusStarting": {
+    "message": "✓ Monitorización iniciada, esta pestaña se cerrará en 3 segundos…"
+  },
+  "permHintStarted": {
+    "message": "Haz clic en el icono del ojo en la barra de herramientas para ver el estado o detener en cualquier momento."
+  },
+  "permStatusDenied": {
+    "message": "✗ Permiso denegado"
+  },
+  "permHintDenied": {
+    "message": "Si lo cerraste por accidente, haz clic en el botón de nuevo.<br>Si el botón no funciona, es posible que lo hayas bloqueado antes: haz clic en el icono a la izquierda de la barra de direcciones → busca \"Cámara\" → cambia a \"Permitir\", y recarga esta página."
+  },
+  "permStatusNoDevice": {
+    "message": "✗ No se encontró ninguna cámara"
+  },
+  "permHintNoDevice": {
+    "message": "Por favor, asegúrate de que tu ordenador tiene una cámara disponible y que no está siendo usada por otra aplicación."
+  },
+  "permStatusErrorPrefix": {
+    "message": "✗ Ocurrió un error："
+  },
+  "notifTitle": {
+    "message": "Alguien está mirando tu pantalla"
+  },
+  "notifBodyNoCount": {
+    "message": "Se detectó a alguien mirando de frente a $DIST$.",
+    "placeholders": {
+      "dist": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifDistNear": {
+    "message": "Cerca"
+  },
+  "notifDistAbout": {
+    "message": "Aprox. $CM$ cm",
+    "placeholders": {
+      "cm": {
+        "content": "$1"
+      }
+    }
+  },
+  "offscreenJustification": {
+    "message": "Usa la cámara en segundo plano para la detección facial local y determinar si alguien se acerca y mira la pantalla."
+  },
+  "faceNone": {
+    "message": "No"
+  }
+}

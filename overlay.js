@@ -115,8 +115,16 @@
     const faceBoxes = info.faceBoxes || [info.faceBox || { cx: 0.5, cy: 0.4 }];
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const distText = info.distanceCm ? `約 ${info.distanceCm} 公分` : "近距離";
-    const countText = faceBoxes.length > 1 ? `${faceBoxes.length} 人` : "";
+    const distText = info.distanceCm
+      ? chrome.i18n.getMessage("overlayDistAbout", [String(info.distanceCm)])
+      : chrome.i18n.getMessage("overlayDistNear");
+    const countText = faceBoxes.length > 1
+      ? chrome.i18n.getMessage("overlayCount", [String(faceBoxes.length)])
+      : "";
+    const subText = countText
+      ? chrome.i18n.getMessage("overlaySubWithCount", [countText, distText])
+      : chrome.i18n.getMessage("overlaySubNoCount", [distText]);
+    const titleText = chrome.i18n.getMessage("overlayTitle");
 
     const markerHTML = faceBoxes.map((fb) => {
       const faceX = Math.round(fb.cx * vw);
@@ -163,8 +171,8 @@
       <div class="gg-banner">
         <span class="gg-eye">👁</span>
         <span>
-          <span class="gg-title">有人正在看你的螢幕</span><br>
-          <span class="gg-sub">偵測到${countText ? countText + "，" : ""}${distText}處有人正面注視鏡頭</span>
+          <span class="gg-title">${titleText}</span><br>
+          <span class="gg-sub">${subText}</span>
         </span>
       </div>
       ${markerHTML}
