@@ -56,16 +56,7 @@ async function initModel() {
   const wasmPath = chrome.runtime.getURL("wasm");
   const filesetResolver = await FilesetResolver.forVisionTasks(wasmPath);
 
-  // 模型：優先用本機打包的檔案，找不到才從 Google CDN 下載
-  let modelPath = chrome.runtime.getURL("models/face_landmarker.task");
-  try {
-    const probe = await fetch(modelPath, { method: "HEAD" });
-    if (!probe.ok) throw new Error("本機模型不存在");
-  } catch (e) {
-    // 退而求其次：從 Google 官方 CDN 載入（fetch 不受 script-src 限制）
-    modelPath =
-      "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task";
-  }
+  const modelPath = chrome.runtime.getURL("models/face_landmarker.task");
 
   async function build(delegate) {
     return await FaceLandmarker.createFromOptions(filesetResolver, {

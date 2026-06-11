@@ -3,6 +3,7 @@
   "name": "Gaze Guard 窺探守衛",
   "version": "1.0.1",
   "description": "偵測到一定距離內有人盯著你的螢幕時，顯示提醒並自動切換到指定分頁。所有運算在本機完成，影像不離開你的電腦。",
+  "homepage_url": "https://github.com/steepinglogic/gaze-guard",
   "permissions": [
     "tabs",
     "offscreen",
@@ -11,11 +12,10 @@
     "scripting"
   ],
   "host_permissions": [
-    "https://storage.googleapis.com/*",
     "<all_urls>"
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self' https://storage.googleapis.com"
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self'"
   },
   "background": {
     "service_worker": "background.js",
