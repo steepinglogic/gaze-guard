@@ -11,12 +11,14 @@ const watchFill = $("watch-fill");
 const errorBox = $("error-box");
 const targetCurrent = $("target-current");
 const kofiBtn = $("kofi-btn");
+const userLocaleSel = $("user-locale");
 
 let monitoring = false;
 let currentSettings = {};
 
 // --- 載入設定到 UI ---
 async function loadUI() {
+  if (window.i18nReady) await window.i18nReady;
   const data = await chrome.storage.local.get([
     "gazeSettings",
     "actionMode",
@@ -62,6 +64,8 @@ async function loadUI() {
   } else {
     targetCurrent.textContent = chrome.i18n.getMessage("targetUnset");
   }
+
+  if (userLocaleSel) userLocaleSel.value = data.userLocale || "auto";
 
   // 向 background 詢問實際監控狀態
   chrome.runtime.sendMessage({ type: "POPUP_GET_STATE" }, (resp) => {
@@ -233,5 +237,13 @@ chrome.runtime.onMessage.addListener((msg) => {
     renderState();
   }
 });
+
+if (userLocaleSel) {
+  userLocaleSel.addEventListener("change", async (e) => {
+    await chrome.storage.local.set({ userLocale: e.target.value });
+    if (window.i18nReload) await window.i18nReload();
+    renderState();
+  });
+}
 
 loadUI();

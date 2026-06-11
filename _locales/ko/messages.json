@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "없음"
+  },
+  "sectionLanguage": {
+    "message": "인터페이스 언어"
+  },
+  "localeAuto": {
+    "message": "자동(브라우저 언어)"
   }
 }

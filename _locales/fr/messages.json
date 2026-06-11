@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "Non"
+  },
+  "sectionLanguage": {
+    "message": "Langue de l’interface"
+  },
+  "localeAuto": {
+    "message": "Auto (navigateur)"
   }
 }

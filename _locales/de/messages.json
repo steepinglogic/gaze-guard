@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "Nein"
+  },
+  "sectionLanguage": {
+    "message": "Oberflächensprache"
+  },
+  "localeAuto": {
+    "message": "Auto (Browser)"
   }
 }

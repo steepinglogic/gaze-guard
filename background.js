@@ -4,6 +4,45 @@
 
 let isMonitoring = false;
 
+// ── i18n override (mirrors i18n.js but for service-worker context) ──
+let _i18nOverride = null;
+let _i18nLoadPromise = null;
+async function _loadI18nOverride() {
+  _i18nOverride = null;
+  try {
+    const { userLocale } = await chrome.storage.local.get("userLocale");
+    if (!userLocale || userLocale === "auto") return;
+    const url = chrome.runtime.getURL(`_locales/${userLocale}/messages.json`);
+    const res = await fetch(url);
+    if (res.ok) _i18nOverride = await res.json();
+  } catch (e) { /* fall back */ }
+}
+function ensureI18n() {
+  if (!_i18nLoadPromise) _i18nLoadPromise = _loadI18nOverride();
+  return _i18nLoadPromise;
+}
+const _origGetMsg = chrome.i18n.getMessage.bind(chrome.i18n);
+chrome.i18n.getMessage = (key, subs) => {
+  if (_i18nOverride && _i18nOverride[key]) {
+    let m = _i18nOverride[key].message;
+    const ph = _i18nOverride[key].placeholders || {};
+    const sArr = Array.isArray(subs) ? subs : (subs != null ? [subs] : []);
+    for (const [name, def] of Object.entries(ph)) {
+      const i = parseInt(String(def.content).replace("$", ""), 10) - 1;
+      const tok = "$" + name.toUpperCase() + "$";
+      m = m.split(tok).join(sArr[i] ?? "");
+    }
+    return m;
+  }
+  return _origGetMsg(key, subs);
+};
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "local" && changes.userLocale) {
+    _i18nLoadPromise = _loadI18nOverride();
+  }
+});
+
+
 // 確保 offscreen document 存在
 async function ensureOffscreen() {
   const existingContexts = await chrome.runtime.getContexts({
@@ -11,6 +50,7 @@ async function ensureOffscreen() {
   });
   if (existingContexts.length > 0) return;
 
+  await ensureI18n();
   await chrome.offscreen.createDocument({
     url: "offscreen.html",
     reasons: ["USER_MEDIA"],
@@ -82,10 +122,25 @@ async function handleTrigger(info) {
     "overlayDurationMs",
   ]);
   const actionMode = cfg.actionMode || "notify_and_switch";
+  await ensureI18n();
+  const faceBoxes = info.faceBoxes || [info.faceBox || { cx: 0.5, cy: 0.4 }];
+  const distText = info.distanceCm
+    ? chrome.i18n.getMessage("overlayDistAbout", [String(info.distanceCm)])
+    : chrome.i18n.getMessage("overlayDistNear");
+  const countText = faceBoxes.length > 1
+    ? chrome.i18n.getMessage("overlayCount", [String(faceBoxes.length)])
+    : "";
+  const subText = countText
+    ? chrome.i18n.getMessage("overlaySubWithCount", [countText, distText])
+    : chrome.i18n.getMessage("overlaySubNoCount", [distText]);
   const overlayOpts = {
     overlayMode: cfg.overlayMode || "border",
     overlayColor: cfg.overlayColor || "#c9a35b",
     overlayDurationMs: cfg.overlayDurationMs || 1500,
+    strings: {
+      title: chrome.i18n.getMessage("overlayTitle"),
+      sub: subText,
+    },
   };
   console.log(
     `[GazeGuard/BG] actionMode=${actionMode}, overlayOpts=`,
@@ -189,7 +244,8 @@ async function showOverlayOnTab(tab, info, overlayOpts) {
 }
 
 // 系統通知（覆蓋層無法注入時的備援）
-function showSystemNotification(info) {
+async function showSystemNotification(info) {
+  await ensureI18n();
   const distText = info.distanceCm
     ? chrome.i18n.getMessage("notifDistAbout", [String(info.distanceCm)])
     : chrome.i18n.getMessage("notifDistNear");

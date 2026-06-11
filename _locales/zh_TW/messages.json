@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "否"
+  },
+  "sectionLanguage": {
+    "message": "介面語言"
+  },
+  "localeAuto": {
+    "message": "自動（瀏覽器語言）"
   }
 }

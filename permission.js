@@ -9,6 +9,7 @@ function setStatus(text, cls) {
 }
 
 async function requestCamera() {
+  if (window.i18nReady) await window.i18nReady;
   grantBtn.disabled = true;
   setStatus(chrome.i18n.getMessage("permStatusRequesting"));
   try {

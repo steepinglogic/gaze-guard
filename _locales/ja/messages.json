@@ -258,5 +258,11 @@
   },
   "faceNone": {
     "message": "なし"
+  },
+  "sectionLanguage": {
+    "message": "インターフェース言語"
+  },
+  "localeAuto": {
+    "message": "自動（ブラウザ言語）"
   }
 }
