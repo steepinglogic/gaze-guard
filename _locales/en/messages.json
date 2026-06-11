@@ -78,7 +78,7 @@
     "message": "Display Duration"
   },
   "hintDuration": {
-    "message": "How long the alert stays on screen (max 5000 ms). If switching tabs is enabled, it will switch after this duration."
+    "message": "Duration the alert stays on screen"
   },
   "targetIntro": {
     "message": "Target Tab (switches here when peeked):"

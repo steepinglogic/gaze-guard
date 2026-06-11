@@ -78,7 +78,7 @@
     "message": "Durée d'affichage"
   },
   "hintDuration": {
-    "message": "Temps de maintien de l'alerte à l'écran (max 5000 ms). Si le changement d'onglet est activé, il s'effectuera après ce délai."
+    "message": "Durée d'affichage de l'alerte"
   },
   "targetIntro": {
     "message": "Onglet cible (vers lequel basculer en cas de regard indiscret) :"

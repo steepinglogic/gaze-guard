@@ -78,7 +78,7 @@
     "message": "Anzeigedauer"
   },
   "hintDuration": {
-    "message": "Zeit, die die Warnung auf dem Bildschirm bleibt (max. 5000 ms). Wenn auch der Tab gewechselt wird, erfolgt der Wechsel nach dieser Zeit."
+    "message": "Anzeigedauer der Benachrichtigung"
   },
   "targetIntro": {
     "message": "Ziel-Tab (Wechsel hierhin, wenn Sie beobachtet werden):"
