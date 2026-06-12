@@ -131,7 +131,7 @@ toggleBtn.addEventListener("click", async () => {
 
 // --- Ko-fi 按鈕 ---
 kofiBtn.addEventListener("click", () => {
-  chrome.tabs.create({ url: "https://ko-fi.com/steepinglogic" });
+  chrome.tabs.create({ url: "https://ko-fi.com/steepinglogic?utm_source=gaze-guard&utm_medium=popup&utm_campaign=chrome-extension&ref=gaze-guard" });
 });
 
 // --- 設定目標分頁 ---
